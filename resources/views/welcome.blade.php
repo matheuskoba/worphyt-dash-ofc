@@ -7,24 +7,36 @@
         <title>Worphyt Dashboard</title>
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/welcomestyle.css') }}" >
 
         {{-- Fontawesome --}}
         <script src="https://kit.fontawesome.com/92e90f8568.js" crossorigin="anonymous"></script>
-
+        {{-- Jquery --}}
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
     <body>
-        <nav>
-            <img src="{{ asset('img/logo.png') }}">
-                {{-- organizaçao da navbar --}}
-            <div class="alinhamento">
-                <a href="http://127.0.0.1:8000"><i class="fa-solid fa-house"></i>Início</a>
-                <a href="http://127.0.0.1:8000/agenda"><i class="fa-solid fa-calendar"></i>Agenda</a>
-                <a href="http://127.0.0.1:8000/perfil"><i class="fa-solid fa-user"></i>Perfil</a>
+        <x-pack-navbar/>
+        <div class="container">
+            <div class="title">
+                <h2>Dashboard</h2>
+                <p>Início</p>
             </div>
+            <div class="all-services">
+                <p>Serviços</p>
+                <div class="list-services">
+                    <div class="service">
+                        <div class="name-service">
+                            <p>Emagrecimento (Iniciante)</p>
+                            <span>Treino voltado para perda rápida de peso para iniciantes</span>
+                        </div>
+                        <div class="buttons-service">
+                            <button><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <div>
-                <img src="{{ asset('img/user.png') }}">
-            </div>
-        </nav>
     </body>
 </html>

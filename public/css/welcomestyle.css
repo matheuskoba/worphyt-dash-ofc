@@ -1,0 +1,65 @@
+body
+{
+    background: #1e1e1e;
+}
+
+.container
+{
+    padding: 78px 100px 100px 100px;
+}
+.container .title h2
+{
+    color: white;
+    font-weight: normal;
+}
+.container .title p
+{
+    color: white;
+    margin-top: -16px;
+
+}
+.all-services p
+{
+    color: #004aad;
+    margin-top: 30px;
+    font-weight: bold;
+}
+.all-services .list-services .service
+{
+    background: #000000;
+    width: 35rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.all-services .list-services .service p
+{
+    color: #004aad;
+    margin-top: 0;
+    margin-bottom: 2px;
+    font-weight: normal;
+}
+.all-services .list-services .service .name-service
+{
+    padding: 20px 0 20px 20px;
+}
+.all-services .list-services .service .name-service span
+{
+    color: #a8a8a8;
+    font-size: 12px;
+    margin-top: -12px;
+}
+.all-services .list-services .service .buttons-service button
+{
+    border-radius: 10px;
+    border: solid 1px white;
+    background-color: black;
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+}
+.all-services .list-services .service .buttons-service button i
+{
+    color: white;
+}
