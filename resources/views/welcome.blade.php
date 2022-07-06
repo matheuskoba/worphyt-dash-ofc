@@ -15,7 +15,7 @@
     <body>
         <nav>
             <img src="{{ asset('img/logo.png') }}">
-            
+                {{-- organizaçao da navbar --}}
             <div class="alinhamento">
                 <a href="http://127.0.0.1:8000"><i class="fa-solid fa-house"></i>Início</a>
                 <a href="http://127.0.0.1:8000/agenda"><i class="fa-solid fa-calendar"></i>Agenda</a>
