@@ -1,0 +1,50 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+nav
+{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    height: 6em;
+    display: flex;
+    align-items: center;
+}
+nav img
+{
+    margin-left: 20px;
+    width: 15em;
+    margin-right: 15px;
+}
+nav div a
+{
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+nav div a i
+{
+    margin-right: 7px;
+    color: white;
+}
+.alinhamento
+{
+    display: inline;
+}
+nav div
+{
+    width: 100%;
+}
+nav div img
+{
+    margin-left: 0;
+    margin-right: 20px;
+    width: 30px;
+    background-color: white;
+    border-radius: 40px;
+    float: right;
+}
