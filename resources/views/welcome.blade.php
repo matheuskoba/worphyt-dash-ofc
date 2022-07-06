@@ -34,6 +34,26 @@
                             <button><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </div>
+                    <div class="service">
+                        <div class="name-service">
+                            <p>Hipertrofia (Iniciante)</p>
+                            <span>Treino voltado para ganho rápido de massa magra para iniciantes</span>
+                        </div>
+                        <div class="buttons-service">
+                            <button><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="name-service">
+                            <p>Especial Idosos</p>
+                            <span>Treino voltado para idosos que precisem de acompanhamento especial na realização de atividades fisicas</span>
+                        </div>
+                        <div class="buttons-service">
+                            <button><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

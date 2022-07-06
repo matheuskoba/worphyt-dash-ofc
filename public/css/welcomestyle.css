@@ -32,17 +32,19 @@ body
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 10px;
 }
-.all-services .list-services .service p
+.all-services .list-services .service .name-service
+{
+    padding: 20px 0 20px 20px;
+    width: 70%;
+}
+.all-services .list-services .service .name-service p
 {
     color: #004aad;
     margin-top: 0;
     margin-bottom: 2px;
     font-weight: normal;
-}
-.all-services .list-services .service .name-service
-{
-    padding: 20px 0 20px 20px;
 }
 .all-services .list-services .service .name-service span
 {
@@ -53,11 +55,16 @@ body
 .all-services .list-services .service .buttons-service button
 {
     border-radius: 10px;
-    border: solid 1px white;
+    border: solid 1px #004aad;
     background-color: black;
     cursor: pointer;
     width: 50px;
     height: 30px;
+}
+.all-services .list-services .service .buttons-service button:hover,
+.all-services .list-services .service .buttons-service button:active
+{
+    background-color: #004aad;
 }
 .all-services .list-services .service .buttons-service button i
 {
