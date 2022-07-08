@@ -1,0 +1,66 @@
+body
+{
+    background: black;
+}
+.container
+{
+    padding: 78px 100px 100px 100px;
+}
+.container .head h2
+{
+    color: white;
+    font-weight: normal;
+}
+.container .head p
+{
+    color: white;
+    margin-top: -16px;
+}
+.container .profile p
+{
+    color: #004aad;
+    margin-top: 30px;
+    font-weight: bold;
+}
+.container .profile .card-profile
+{
+    background: #121212;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+.container .profile .card-profile .card-header
+{
+    padding: 3rem;
+}
+.container .profile .card-profile .card-header img
+{
+    width: 10%;
+    background: white;
+    border-radius: 80px;
+}
+.container .profile .card-profile .card-header h3
+{
+    font-weight: normal;
+}
+.container .profile .card-profile .card-header p
+{
+    margin-top: -12px;
+    margin-bottom: 7px;
+    color: #868686;
+    font-size: 15px;
+}
+.container .profile .card-profile .card-header span
+{
+    color: #868686;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 960px)
+{
+    .container
+    {
+        padding: 80px 10px 10px 10px;
+    }
+}

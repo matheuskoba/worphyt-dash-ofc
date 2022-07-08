@@ -7,6 +7,7 @@
     <title>Worphyt Dashboard</title>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/perfilstyle.css') }}" >
 
     {{-- Fontawesome --}}
     <script src="https://kit.fontawesome.com/92e90f8568.js" crossorigin="anonymous"></script>
@@ -15,5 +16,22 @@
     </head>
     <body>
         <x-pack-navbar/>
+        <div class="container">
+            <div class="head">
+                <h2>Dashboard</h2>
+                <p>Perfil</p>
+            </div>
+            <div class="profile">
+                <p>Seus dados</p>
+                <div class="card-profile">
+                    <div class="card-header">
+                        <img src="{{ asset('img/user.png') }}" alt="profile">
+                        <h3>Raulisson Vinicius</h3>
+                        <p>Engenheiro de Qualidade</p>
+                        <span>Brasília - DF</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

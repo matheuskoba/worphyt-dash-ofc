@@ -26,34 +26,63 @@
                 <div class="list-services">
                     <div class="service">
                         <div class="name-service">
-                            <p>Emagrecimento (Iniciante)</p>
+                            <div class="price-name">
+                                <p>Emagrecimento (Iniciante)</p>
+                                <h6>R$ 59,90</h6>
+                            </div>
                             <span>Treino voltado para perda rápida de peso para iniciantes</span>
                         </div>
                         <div class="buttons-service">
-                            <button><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="document.getElementById('open-modal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </div>
                     <div class="service">
                         <div class="name-service">
-                            <p>Hipertrofia (Iniciante)</p>
+                            <div class="price-name">
+                                <p>Hipertrofia (Iniciante)</p>
+                                <h6>R$ 59,90</h6>
+                            </div>
                             <span>Treino voltado para ganho rápido de massa magra para iniciantes</span>
                         </div>
                         <div class="buttons-service">
-                            <button><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="document.getElementById('open-modal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </div>
                     <div class="service">
                         <div class="name-service">
-                            <p>Especial Idosos</p>
+                            <div class="price-name">
+                                <p>Especial Idosos</p>
+                                <h6>R$ 59,90</h6>
+                            </div>
                             <span>Treino voltado para idosos que precisem de acompanhamento especial na realização de atividades fisicas</span>
                         </div>
                         <div class="buttons-service">
-                            <button><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button onclick="document.getElementById('open-modal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div style="display: none" id="open-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-title">
+                        <span onclick="document.getElementById('open-modal').style.display='none'">&times;</span>
+                        <h2>EDITAR SERVIÇO</h2>
+                    </div>
+                    <form>
+                        <label for="sname">Nome do serviço</label>
+                        <input type="text" id="sname" name="servicename" placeholder="Digite o nome do serviço ex. hipertrofia (iniciante)">
+
+                        <label for="sprice">Preço do serviço</label>
+                        <input type="number" id="sprice" name="pricename" placeholder="Digite o preço do serviço ex. 59,90">
+
+                        <label for="sdescription">Descrição do serviço</label>
+                        <input type="text" id="sdescription" name="description" placeholder="Digite a descrição do serviço">
+
+                        <input type="submit" value="Submit">
+                    </form>
                 </div>
             </div>
         </div>
