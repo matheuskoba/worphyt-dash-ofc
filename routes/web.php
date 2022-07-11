@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +15,8 @@ use App\Http\Controllers\SiteController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [AuthController::class, 'create']);
+Route::get('/inicio', [SiteController::class, 'index']);
 
-Route::get('/', [SiteController::class, 'index'] );
 Route::get('/agenda', [SiteController::class, 'agenda'] );
 Route::get('/perfil', [SiteController::class, 'perfil'] );

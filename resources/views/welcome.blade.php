@@ -22,12 +22,15 @@
                 <p>Início</p>
             </div>
             <div class="all-services">
-                <p>Serviços</p>
+                <div class="t-header">
+                    <p>Serviços</p>
+                    <button onclick="document.getElementById('open-modal-add').style.display='block'"><i class="fa-solid fa-plus"></i></button>
+                </div>
                 <div class="list-services">
                     <div class="service">
                         <div class="name-service">
                             <div class="price-name">
-                                <p>Emagrecimento (Iniciante)</p>
+                                <p>teste</p>
                                 <h6>R$ 59,90</h6>
                             </div>
                             <span>Treino voltado para perda rápida de peso para iniciantes</span>
@@ -37,32 +40,26 @@
                             <button><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </div>
-                    <div class="service">
-                        <div class="name-service">
-                            <div class="price-name">
-                                <p>Hipertrofia (Iniciante)</p>
-                                <h6>R$ 59,90</h6>
-                            </div>
-                            <span>Treino voltado para ganho rápido de massa magra para iniciantes</span>
-                        </div>
-                        <div class="buttons-service">
-                            <button onclick="document.getElementById('open-modal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button><i class="fa-solid fa-trash"></i></button>
-                        </div>
+                </div>
+            </div>
+            <div style="display: none" id="open-modal-add" class="modal">
+                <div class="modal-content">
+                    <div class="modal-title">
+                        <span onclick="document.getElementById('open-modal-add').style.display='none'">&times;</span>
+                        <h2>ADICIONAR SERVIÇO</h2>
                     </div>
-                    <div class="service">
-                        <div class="name-service">
-                            <div class="price-name">
-                                <p>Especial Idosos</p>
-                                <h6>R$ 59,90</h6>
-                            </div>
-                            <span>Treino voltado para idosos que precisem de acompanhamento especial na realização de atividades fisicas</span>
-                        </div>
-                        <div class="buttons-service">
-                            <button onclick="document.getElementById('open-modal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                    </div>
+                    <form>
+                        <label for="sname-add">Nome do serviço</label>
+                        <input type="text" id="sname-add" name="servicename-add" placeholder="Digite o nome do serviço">
+
+                        <label for="sprice-add">Preço do serviço</label>
+                        <input type="number" id="sprice-add" name="pricename-add" placeholder="Digite o preço do serviço">
+
+                        <label for="sdescription-add">Descrição do serviço</label>
+                        <input type="text" id="sdescription-add" name="description-add" placeholder="Digite a descrição do serviço">
+
+                        <input type="submit" value="Salvar">
+                    </form>
                 </div>
             </div>
             <div style="display: none" id="open-modal" class="modal">
@@ -71,17 +68,18 @@
                         <span onclick="document.getElementById('open-modal').style.display='none'">&times;</span>
                         <h2>EDITAR SERVIÇO</h2>
                     </div>
-                    <form>
+                    <form method="POST" action="/">
+                        @csrf
                         <label for="sname">Nome do serviço</label>
-                        <input type="text" id="sname" name="servicename" placeholder="Digite o nome do serviço ex. hipertrofia (iniciante)">
+                        <input type="text" id="sname" name="servicename" placeholder="Digite o nome do serviço">
 
                         <label for="sprice">Preço do serviço</label>
-                        <input type="number" id="sprice" name="pricename" placeholder="Digite o preço do serviço ex. 59,90">
+                        <input type="number" id="sprice" name="pricename" placeholder="Digite o preço do serviço">
 
                         <label for="sdescription">Descrição do serviço</label>
                         <input type="text" id="sdescription" name="description" placeholder="Digite a descrição do serviço">
 
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Salvar">
                     </form>
                 </div>
             </div>

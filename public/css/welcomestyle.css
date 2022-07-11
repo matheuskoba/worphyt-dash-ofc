@@ -17,10 +17,36 @@ body
     color: white;
     margin-top: -16px;
 }
-.all-services p
+.all-services .t-header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.all-services .t-header button
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 1px #004aad;
+    background: none;
+}
+.all-services .t-header button:hover
+{
+    background: #004aad;
+    cursor: pointer;
+}
+.all-services .t-header button i
+{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+}
+.all-services .t-header p
 {
     color: #004aad;
-    margin-top: 30px;
     font-weight: bold;
 }
 .all-services .list-services .service
