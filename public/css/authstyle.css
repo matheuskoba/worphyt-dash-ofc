@@ -29,6 +29,7 @@ body.active
 .bluebg
 {
     position: absolute;
+    border-radius: 10px;
     top: 40px;
     width: 100%;
     height: 420px;
@@ -58,6 +59,7 @@ body.active
 .bluebg .box button
 {
     cursor: pointer;
+    border-radius: 10px;
     padding: 10px 20px;
     background-color: #fff;
     color: #333;
@@ -72,6 +74,7 @@ body.active
     left: 0;
     width: 50%;
     height: 100%;
+    border-radius: 10px;
     background-color: #fff;
     z-index: 1000;
     display: flex;
@@ -133,10 +136,12 @@ body.active
     outline: none;
     font-size: 16px;
     border: 1px solid #333;
+    border-radius: 10px;
 }
 .formBx .form form input[type="submit"]
 {
     background: #000000;
+    border-radius: 10px;
     border: none;
     color: #fff;
     max-width: 100vh;
