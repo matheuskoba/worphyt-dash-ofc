@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Entrar</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/authstyle.css') }}" >
+        <link href='https://fonts.googleapis.com/css?family=Racing Sans One' rel='stylesheet'>
     </head>
     <body id="body">
         <div class="container">
@@ -21,21 +22,31 @@
             </div>
             <div id="formBx" class="formBx">
                 <div class="form signinForm">
-                    <form method="POST">
+                    <form method="POST" action="{{ route('auth.login') }}">
+                        @csrf
+                        <img class="logo" src="{{ asset('img/logob.png') }}" alt="logo">
                         <h3>Entrar</h3>
-                        <input id="emailPersonal" type="text" placeholder="Email">
-                        <input id="senhaPersonal" type="password" placeholder="Senha">
-                        <input id="personalTrainerCad" type="submit" value="Entrar">
+                        <input id="email" name="email" type="email" value="koba@gmail.com" placeholder="Email">
+                        <input id="password" name="password" type="password" value="1234" placeholder="Senha">
+                        <input type="submit" value="Entrar">
+                        @if($errors->all())
+                            @foreach($errors->all() as $error)
+                                <p style="color: red">{{ $error }}</p>
+                            @endforeach
+                        @endif
                     </form>
                 </div>
 
                 <div class="form signupForm">
-                    <form method="POST">
+                    <form method="POST" action="{{ route('auth.register') }}">
+                        @csrf
+                        <img class="logo" src="{{ asset('img/logob.png') }}" alt="logo">
                         <h3>Cadastro</h3>
-                        <input id="emailAluno" type="text" placeholder="Email">
-                        <input id="senhaAluno" type="password" placeholder="Senha">
-                        <input id="confirmaSenhaAluno" type="password" placeholder="Confirme a senha">
-                        <input id="alunoCad" type="submit" value="Cadastrar">
+                        <input id="nome" name="name" type="text" placeholder="Nome">
+                        <input id="email" name="email" type="text" placeholder="Email">
+                        <input id="senha" name="password" type="password" placeholder="Senha">
+                        <input id="confirmaSenha" name="confirmPassword" type="password" placeholder="Confirme a senha">
+                        <input id="cad" type="submit" value="Cadastrar">
                     </form>
                 </div>
             </div>

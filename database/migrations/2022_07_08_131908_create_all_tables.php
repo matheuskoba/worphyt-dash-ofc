@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('tipo');
+            $table->timestamps();
         });
         Schema::create('userfavorites', function (Blueprint $table) {
             $table->id();
@@ -37,10 +38,13 @@ return new class extends Migration
         Schema::create('personals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('email');
+            $table->string('password');
             $table->string('avatar')->default('default.png');
             $table->float('stars')->default(5);
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
+            $table->timestamps();
         });
         Schema::create('personalphotos', function (Blueprint $table) {
             $table->id();

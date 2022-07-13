@@ -30,7 +30,7 @@
                     <div class="service">
                         <div class="name-service">
                             <div class="price-name">
-                                <p>teste</p>
+                                <p>Teste</p>
                                 <h6>R$ 59,90</h6>
                             </div>
                             <span>Treino voltado para perda rápida de peso para iniciantes</span>

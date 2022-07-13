@@ -15,8 +15,12 @@ use App\Http\Controllers\AuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [AuthController::class, 'create']);
-Route::get('/inicio', [SiteController::class, 'index']);
 
-Route::get('/agenda', [SiteController::class, 'agenda'] );
-Route::get('/perfil', [SiteController::class, 'perfil'] );
+Route::post('dashboard/authentication/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('dashboard/authentication/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::post('dashboard/authentication/register', [AuthController::class, 'register'])->name('auth.register');
+
+Route::get('/dashboard/authentication', [AuthController::class, 'authentication'])->name('auth');
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard/agenda', [SiteController::class, 'agenda']);
+Route::get('/dashboard/perfil', [SiteController::class, 'perfil']);

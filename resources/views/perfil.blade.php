@@ -29,6 +29,7 @@
                         <h3>Raulisson Vinicius</h3>
                         <p>Engenheiro de Qualidade</p>
                         <span>Brasília - DF</span>
+                        <a href="{{ route('auth.logout') }}">SAIR</a>
                     </div>
                 </div>
             </div>
