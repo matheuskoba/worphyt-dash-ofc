@@ -11,7 +11,7 @@
             </div>
 
             <div class="profile">
-                <p>{{ 'username' }} <img src="{{ asset('img/user.png') }}" alt="profile"></p>
+                <p>{{ $name }} <img src="{{ asset('img/user.png') }}" alt="profile"></p>
             </div>
         </nav>
         <div class="toggle">

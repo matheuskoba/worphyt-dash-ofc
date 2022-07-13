@@ -15,7 +15,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
     <body>
-        <x-pack-navbar/>
+        <x-pack-navbar :name="$name"/>
         <div class="container">
             <div class="title">
                 <h2>Dashboard</h2>

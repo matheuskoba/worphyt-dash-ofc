@@ -15,7 +15,7 @@ class AuthController extends Controller
         $user = User::find(Auth()->user());
 
         if(Auth::check()){
-            return view('dashboard', compact('user'));
+            return view('dashboard', ['name' => $user[0]->name]);
         }
 
         return redirect()->route('auth');
