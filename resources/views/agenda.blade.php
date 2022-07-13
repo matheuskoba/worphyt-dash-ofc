@@ -17,8 +17,11 @@
     <body>
         <x-pack-navbar/>
 
+        <div class="title">
+            <h2>Dashboard</h2>
+            <p>Agenda</p>
+        </div>
         <div class="main-container-wrapper">
-
             <main>
                 <div class="calendar-container">
                     <div class="calendar-container__header">

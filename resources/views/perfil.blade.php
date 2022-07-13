@@ -27,9 +27,41 @@
                     <div class="card-header">
                         <img src="{{ asset('img/user.png') }}" alt="profile">
                         <h3>Raulisson Vinicius</h3>
-                        <p>Engenheiro de Qualidade</p>
-                        <span>Brasília - DF</span>
-                        <a href="{{ route('auth.logout') }}">SAIR</a>
+                        <p>Bacharel em Educação Física</p>
+                        <p>raulissonvalbuquerque@gmail.com</p>
+                        <p>Brasília - DF</p>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <h4> 3.5 </h4>
+
+                            <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>
+
+                    </div>
+                </div>
+                <div class="card-container">
+                    <p>Suas avaliações</p>
+                    <div class="card-body">
+                        <div class="image">
+                            <img src="{{ asset('img/user.png') }}" alt="profile">
+                        </div>
+                        <div class="info">
+                            <h3> Lucas Oliveira </h3>
+                            <div class="rate">
+                                <h4> 3.5 </h4>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <h4> 13/07/2022 <h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <p> Muito bom, chegou na hora. O Personal me tratou melhor que minha família. </p>
                     </div>
                 </div>
             </div>

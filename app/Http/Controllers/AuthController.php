@@ -75,7 +75,7 @@ class AuthController extends Controller
         }else{
             return view('auth', ['result' => 'Dados incorretos']);
         }
-        return view('inicio');
+        return view('dashboard');
     }
     public function logout()
     {

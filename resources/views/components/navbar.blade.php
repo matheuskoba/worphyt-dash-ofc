@@ -4,7 +4,7 @@
         <nav class="">
             <div class="menus">
                 <ul>
-                    <li><a href="http://127.0.0.1:8000"><i class="fa-solid fa-house"></i>Início</a></li>
+                    <li><a href="http://127.0.0.1:8000/dashboard"><i class="fa-solid fa-house"></i>Início</a></li>
                     <li><a href="http://127.0.0.1:8000/dashboard/agenda"><i class="fa-solid fa-calendar"></i>Agenda</a></li>
                     <li><a href="http://127.0.0.1:8000/dashboard/perfil"><i class="fa-solid fa-user"></i>Perfil</a></li>
                 </ul>

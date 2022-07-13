@@ -25,7 +25,7 @@ body
 .container .profile .card-profile
 {
     background: #121212;
-    border-radius: 10px;
+    border-radius: 5px;
     text-align: center;
     color: white;
     width: 100%;
@@ -44,19 +44,97 @@ body
 {
     font-weight: normal;
 }
+.container .profile .card-profile .card-header h4
+{
+    font-weight: normal;
+    color: white;
+    margin-top: 5px;
+}
 .container .profile .card-profile .card-header p
 {
     margin-top: -12px;
-    margin-bottom: 7px;
+    margin-bottom: 20px;
     color: #868686;
     font-size: 15px;
 }
-.container .profile .card-profile .card-header span
+.container .profile .card-profile .card-header i
 {
-    color: #868686;
+    color: rgb(242, 242, 24);
     font-size: 15px;
 }
+.container .profile .card-profile .card-header a
+{
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 10px 20px 10px 20px;
+}
+.container .profile .card-profile .card-header a:hover,
+.container .profile .card-profile .card-header a .fa-right-from-bracket:hover
+{
 
+    background-color: red;
+}
+.container .profile .card-profile .card-header a .fa-right-from-bracket
+{
+    color: white;
+    position: relative;
+    top: -1px;
+}
+.container .profile .card-container
+{
+    width: 100%;
+}
+.container .profile .card-container .card-body
+{
+    padding: 20px 5px 5px 20px;
+    background-color: white;
+    display: flex;
+}
+.container .profile .card-container .card-body .image
+{
+    width: 10%;
+}
+.container .profile .card-container .card-body .image img
+{
+    width: 80%;
+    background: white;
+    border-radius: 80px;
+}
+.container .profile .card-container .card-body .info h3
+{
+    margin-top: 5px;
+    padding-left: 5%;
+    font-size: 15px;
+}
+.container .profile .card-container .card-body .rate
+{
+    display: flex;
+    padding-left: 2%;
+}
+.container .profile .card-container .card-body .rate h4
+{
+    margin-top: 0px;
+    padding: 0px 5px 0px 5px;
+}
+.container .profile .card-container .card-body .rate i
+{
+    color: rgb(195, 195, 3);
+}
+.container .profile .card-container .description
+{
+    background-color: white;
+    padding: 10px 5px 5px 5px;
+}
+.container .profile .card-container .description p
+{
+    color: black;
+    padding-left: 10%;
+    margin-top: -20px;
+    margin-left: 20px;
+    display: flex;
+    width: 100%;
+}
 @media screen and (max-width: 960px)
 {
     .container
