@@ -21,6 +21,9 @@ Route::get('dashboard/authentication/logout', [AuthController::class, 'logout'])
 Route::post('dashboard/authentication/register', [AuthController::class, 'register'])->name('auth.register');
 
 Route::get('/dashboard/authentication', [AuthController::class, 'authentication'])->name('auth');
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 Route::get('/dashboard/agenda', [SiteController::class, 'agenda']);
 Route::get('/dashboard/perfil', [SiteController::class, 'perfil']);
+
+Route::post('/dashboard/createservice', [PersonalController::class, 'createService'])->name('createService');
+Route::get('/dashboard', [PersonalController::class, 'showServices'])->name('dashboard');
+

@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('tipo');
+            $table->float('stars')->default(5);
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->timestamps();
         });
         Schema::create('userfavorites', function (Blueprint $table) {
@@ -33,6 +36,9 @@ return new class extends Migration
             $table->integer('id_personal');
             $table->integer('id_service');
             $table->datetime('ap_datetime');
+            $table->float('stars')->default(5);
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
         });
 
         Schema::create('personals', function (Blueprint $table) {
@@ -61,6 +67,7 @@ return new class extends Migration
             $table->integer('id_personal');
             $table->string('name');
             $table->float('price');
+            $table->string('description');
         });
         Schema::create('personaltestimonials', function (Blueprint $table) {
             $table->id();

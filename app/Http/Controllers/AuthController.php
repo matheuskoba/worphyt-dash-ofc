@@ -3,23 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Personal;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    public function dashboard(Request $request)
-    {
-        $user = User::find(Auth()->user());
-
-        if(Auth::check()){
-            return view('dashboard', ['name' => $user[0]->name]);
-        }
-
-        return redirect()->route('auth');
-    }
     public function authentication()
     {
        return view('auth', ['result' => '']);
@@ -61,6 +50,8 @@ class AuthController extends Controller
                 $newPersonal->tipo = 0;
                 $newPersonal->save();
 
+                $user = User::find(Auth()->user());
+
                 $token = Auth::attempt([
                     'email' => $email,
                     'password' => $password
@@ -75,7 +66,7 @@ class AuthController extends Controller
         }else{
             return view('auth', ['result' => 'Dados incorretos']);
         }
-        return view('dashboard');
+        return view('dashboard', ['name' => $user[0]->name]);
     }
     public function logout()
     {

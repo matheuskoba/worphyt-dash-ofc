@@ -27,19 +27,21 @@
                     <button onclick="document.getElementById('open-modal-add').style.display='block'"><i class="fa-solid fa-plus"></i></button>
                 </div>
                 <div class="list-services">
-                    <div class="service">
-                        <div class="name-service">
-                            <div class="price-name">
-                                <p>Teste</p>
-                                <h6>R$ 59,90</h6>
+                    @foreach($services as $service)
+                        <div class="service">
+                            <div class="name-service">
+                                <div class="price-name">
+                                    <p>{{ $service->name }}</p>
+                                    <h6>{{ $service->price }}</h6>
+                                </div>
+                                <span>{{ $service->description }}</span>
                             </div>
-                            <span>Treino voltado para perda rápida de peso para iniciantes</span>
+                            <div class="buttons-service">
+                                <button onclick="document.getElementById('open-modal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button><i class="fa-solid fa-trash"></i></button>
+                            </div>
                         </div>
-                        <div class="buttons-service">
-                            <button onclick="document.getElementById('open-modal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div style="display: none" id="open-modal-add" class="modal">
@@ -48,15 +50,16 @@
                         <span onclick="document.getElementById('open-modal-add').style.display='none'">&times;</span>
                         <h2>ADICIONAR SERVIÇO</h2>
                     </div>
-                    <form>
-                        <label for="sname-add">Nome do serviço</label>
-                        <input type="text" id="sname-add" name="servicename-add" placeholder="Digite o nome do serviço">
+                    <form method="POST" action="{{ route('createService') }}">
+                        @csrf
+                        <label for="nameservice">Nome do serviço</label>
+                        <input type="text" id="nameservice" name="nameservice" placeholder="Digite o nome do serviço">
 
-                        <label for="sprice-add">Preço do serviço</label>
-                        <input type="number" id="sprice-add" name="pricename-add" placeholder="Digite o preço do serviço">
+                        <label for="priceservice">Preço do serviço</label>
+                        <input type="number" step="0.01" id="priceservice" name="priceservice" placeholder="Digite o preço do serviço">
 
-                        <label for="sdescription-add">Descrição do serviço</label>
-                        <input type="text" id="sdescription-add" name="description-add" placeholder="Digite a descrição do serviço">
+                        <label for="descriptionservice">Descrição do serviço</label>
+                        <input type="text" id="descriptionservice" name="descriptionservice" placeholder="Digite a descrição do serviço">
 
                         <input type="submit" value="Salvar">
                     </form>
