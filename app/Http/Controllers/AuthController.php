@@ -71,7 +71,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        \Log::info("deslogou");
+
         return redirect()->route('auth');
     }
 }

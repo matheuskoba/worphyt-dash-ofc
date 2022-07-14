@@ -51,5 +51,6 @@ class PersonalController extends Controller
                 return view('dashboard', ['services' => $services], ['name' => $user[0]->name]);
             }
         }
+        return view('auth');
     }
 }
