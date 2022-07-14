@@ -55,6 +55,7 @@ class PersonalController extends Controller
         }
         return view('auth');
     }
+
     public function deleteService($id)
     {
         if (Auth::check()) {
@@ -63,4 +64,28 @@ class PersonalController extends Controller
         }
         return redirect()->route('auth');
     }
+    public function showPerfil()
+    {
+        if (Auth::check()) {
+            $user = User::find(Auth()->user());
+
+            if ($user) {
+                return view('perfil', ['name' => $user[0]->name], ['email' => $user[0]->email]);
+            }
+        }
+        return view('auth');
+    }
+    public function showSchedule()
+    {
+        if (Auth::check()) {
+            $user = User::find(Auth()->user());
+
+            if ($user) {
+                return view('agenda', ['name' => $user[0]->name]);
+            }
+        }
+        return view('auth');
+    }
 }
+
+

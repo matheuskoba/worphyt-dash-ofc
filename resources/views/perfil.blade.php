@@ -15,7 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
     <body>
-        <x-pack-navbar/>
+        <x-pack-navbar :name="$name"/>
         <div class="container">
             <div class="head">
                 <h2>Dashboard</h2>
@@ -26,9 +26,10 @@
                 <div class="card-profile">
                     <div class="card-header">
                         <img src="{{ asset('img/user.png') }}" alt="profile">
-                        <h3>Raulisson Vinicius</h3>
+                        <button onclick="document.getElementById('editmodal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i> </button>
+                        <h3>{{ $name }}</h3>
                         <p>Bacharel em Educação Física</p>
-                        <p>raulissonvalbuquerque@gmail.com</p>
+                        <p>{{ $email }}</p>
                         <p>Brasília - DF</p>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
@@ -36,9 +37,7 @@
                         <i class="fa-solid fa-star-half-stroke"></i>
                         <i class="fa-regular fa-star"></i>
                         <h4> 3.5 </h4>
-
-                            <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>
-
+                        <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>
                     </div>
                 </div>
                 <div class="card-container">
@@ -63,6 +62,36 @@
                     <div class="description">
                         <p> Muito bom, chegou na hora. O Personal me tratou melhor que minha família. </p>
                     </div>
+                </div>
+            </div>
+            <div style="display: none" id="editmodal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-title">
+                        <span onclick="document.getElementById('editmodal').style.display='none'">&times;</span>
+                        <h2>EDITAR PERFIL</h2>
+                    </div>
+                    <form method="POST" action="/">
+                        @csrf
+                        <label for="formation">Formação</label>
+                        <input type="text" id="formation" name="formation" placeholder="Altere sua formação">
+
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" value="{{ $email }}">
+
+                        <label for="address">Endereço</label>
+                        <input type="text" id="adress" name="adress" placeholder="Altere seu endereço">
+
+                        <label for="currentpassword">Senha atual</label>
+                        <input type="password" id="currentpassword" name="currentpassword" placeholder="Digite sua senha atual">
+
+                        <label for="newpassword">Senha nova</label>
+                        <input type="password" id="newpassword" name="newpassword" placeholder="Digite sua nova senha">
+
+                        <label for="confirmpassword">Confirmar senha</label>
+                        <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirme sua nova senha">
+
+                        <input type="submit" value="Salvar">
+                    </form>
                 </div>
             </div>
         </div>

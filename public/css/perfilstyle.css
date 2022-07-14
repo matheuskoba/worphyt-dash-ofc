@@ -39,6 +39,7 @@ body
     width: 10%;
     background: white;
     border-radius: 80px;
+    margin-left: 60px;
 }
 .container .profile .card-profile .card-header h3
 {
@@ -57,9 +58,27 @@ body
     color: #868686;
     font-size: 15px;
 }
+.container .profile .card-profile .card-header button
+{
+    background-color: #121212;;
+    float: right;
+    border-radius: 10px;
+    border: none;
+}
+.container .profile .card-profile .card-header button:hover
+{
+    cursor: pointer;
+    background-color: #004aad;
+}
+.container .profile .card-profile .card-header button .fa-pen-to-square
+{
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+}
 .container .profile .card-profile .card-header i
 {
-    color: rgb(242, 242, 24);
+    color: yellow;
     font-size: 15px;
 }
 .container .profile .card-profile .card-header a
@@ -88,7 +107,7 @@ body
 .container .profile .card-container .card-body
 {
     padding: 20px 5px 5px 20px;
-    background-color: white;
+    background-color: rgb(202, 201, 201);
     display: flex;
 }
 .container .profile .card-container .card-body .image
@@ -98,19 +117,19 @@ body
 .container .profile .card-container .card-body .image img
 {
     width: 80%;
-    background: white;
+    background: rgb(202, 201, 201);
     border-radius: 80px;
 }
 .container .profile .card-container .card-body .info h3
 {
     margin-top: 5px;
-    padding-left: 5%;
+    padding-left: 6%;
     font-size: 15px;
 }
 .container .profile .card-container .card-body .rate
 {
     display: flex;
-    padding-left: 2%;
+    padding-left: 3%;
 }
 .container .profile .card-container .card-body .rate h4
 {
@@ -123,17 +142,88 @@ body
 }
 .container .profile .card-container .description
 {
-    background-color: white;
-    padding: 10px 5px 5px 5px;
+    background-color: rgb(202, 201, 201);
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 .container .profile .card-container .description p
 {
     color: black;
-    padding-left: 10%;
-    margin-top: -20px;
-    margin-left: 20px;
+    margin-top: -4%;
+    padding: 0px 0px 0px 12%;
     display: flex;
+    width: auto;
+}
+.modal
+{
+    padding: 20px 20px 20px 20px;
+    position: absolute;
+    background: #131313;
+    left: 10rem;
+    right: 10rem;
+    top: 10rem;
+    bottom: 10rem;
+    height: 43rem;
+    border-radius: 10px;
+}
+.modal .modal-content
+{
+    margin: 20px 20px;
+}
+.modal .modal-content .modal-title h2
+{
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+
+}
+.modal .modal-content .modal-title span
+{
+    float: right;
+    font-size: 3em;
+    margin-top: -30px;
+    cursor: pointer;
+    color: white;
+}
+.modal .modal-content form
+{
+    color: white;
+}
+.modal .modal-content form input[type=text],
+.modal .modal-content form input[type=number],
+.modal .modal-content form input[type=password]
+{
     width: 100%;
+    display: inline-block;
+    border: 1px solid #545454;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    margin: 10px 0px;
+    background: none;
+    color: white;
+    margin-bottom: 20px;
+}
+.modal .modal-content form input[type=text]:focus-visible,
+.modal .modal-content form input[type=number]:focus-visible,
+.modal .modal-content form input[type=password]
+{
+    outline: none;
+}
+.modal .modal-content form input[type=submit]
+{
+    width: 100%;
+    background-color: #004aad;
+    padding: 14px 20px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+.modal .modal-content form input[type=submit]:hover
+{
+    background-color: #003585;
 }
 @media screen and (max-width: 960px)
 {
@@ -141,4 +231,12 @@ body
     {
         padding: 80px 10px 10px 10px;
     }
+    .container .profile .card-container .description p
+{
+    width: auto;
+    padding-left: 10%;
+    margin-top: -20px;
+    margin-left: 20px;
+}
+
 }
