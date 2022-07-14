@@ -47,10 +47,20 @@ class PersonalController extends Controller
             $user = User::find(Auth()->user());
             $services = PersonalServices::select()->where('id_personal', $user[0]->id)->get();
 
-            if ($services) {
+            if ($services->isNotEmpty()) {
                 return view('dashboard', ['services' => $services], ['name' => $user[0]->name]);
+            } else {
+                return view('dashboard', ['services' => null],['name' => $user[0]->name]);
             }
         }
         return view('auth');
+    }
+    public function deleteService($id)
+    {
+        if (Auth::check()) {
+            $service = PersonalServices::where('id', $id)->delete();
+            return redirect()->route('dashboard');
+        }
+        return redirect()->route('auth');
     }
 }

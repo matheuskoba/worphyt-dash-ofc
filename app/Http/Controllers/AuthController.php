@@ -66,7 +66,7 @@ class AuthController extends Controller
         }else{
             return view('auth', ['result' => 'Dados incorretos']);
         }
-        return view('dashboard', ['name' => $user[0]->name]);
+        return redirect()->route('dashboard');
     }
     public function logout()
     {

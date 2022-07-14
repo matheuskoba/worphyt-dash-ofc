@@ -27,21 +27,25 @@
                     <button onclick="document.getElementById('open-modal-add').style.display='block'"><i class="fa-solid fa-plus"></i></button>
                 </div>
                 <div class="list-services">
-                    @foreach($services as $service)
-                        <div class="service">
-                            <div class="name-service">
-                                <div class="price-name">
-                                    <p>{{ $service->name }}</p>
-                                    <h6>{{ $service->price }}</h6>
+                    @if($services === null)
+                        <p style="color: white">Não há serviços</p>
+                    @else
+                        @foreach($services as $service)
+                            <div class="service">
+                                <div class="name-service">
+                                    <div class="price-name">
+                                        <p>{{ $service->name }}</p>
+                                        <h6>{{ $service->price }}</h6>
+                                    </div>
+                                    <span>{{ $service->description }}</span>
                                 </div>
-                                <span>{{ $service->description }}</span>
+                                <div class="buttons-service">
+                                    <button onclick="document.getElementById('open-modal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button onclick="window.location='{{ route('deleteService', $id = $service->id) }}'"><i class="fa-solid fa-trash"></i></button>
+                                </div>
                             </div>
-                            <div class="buttons-service">
-                                <button onclick="document.getElementById('open-modal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button><i class="fa-solid fa-trash"></i></button>
-                            </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div style="display: none" id="open-modal-add" class="modal">

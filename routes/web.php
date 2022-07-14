@@ -26,5 +26,6 @@ Route::get('/dashboard/perfil', [SiteController::class, 'perfil']);
 
 Route::post('/dashboard/createservice', [PersonalController::class, 'createService'])->name('createService');
 Route::get('/dashboard', [PersonalController::class, 'showServices'])->name('dashboard');
+Route::get('/dashboard/deleteservice/{id}', [PersonalController::class, 'deleteService'])->name('deleteService');
 
 
