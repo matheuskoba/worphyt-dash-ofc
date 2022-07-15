@@ -28,4 +28,8 @@ Route::get('/dashboard', [PersonalController::class, 'showServices'])->name('das
 Route::get('/dashboard/deleteservice/{id}', [PersonalController::class, 'deleteService'])->name('deleteService');
 Route::post('/dashboard/updateservice/{id}', [PersonalController::class, 'updateService'])->name('updateservice');
 
+Route::get('/dashboard/authentication/cref', function () {
+    return view('cref');
+});
+Route::post('/dashboard/authentication/cref/addcref', [PersonalController::class, 'addcref'])->name('addcref');
 

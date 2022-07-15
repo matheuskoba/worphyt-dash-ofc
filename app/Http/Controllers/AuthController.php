@@ -24,7 +24,13 @@ class AuthController extends Controller
         ];
 
         if(Auth::attempt($credentials)){
-            return redirect()->route('dashboard');
+            $user = User::find(Auth()->user());
+
+            if ($user[0]->cref != null) {
+                return redirect()->route('dashboard');
+            } else {
+                return redirect()->route('cref');
+            }
         }
         return redirect()->back()->withInput()->withErrors(['Email e/ou senha estão incorretos']);
     }
@@ -41,6 +47,11 @@ class AuthController extends Controller
             $name = $request->input('name');
             $email = $request->input('email');
             $password = $request->input('password');
+            $confirmPassword = $request->input('confirmPassword');
+
+            if ($password != $confirmPassword) {
+                return redirect()->back()->withInput()->withErrors(['As senhas precisam ser iguais']);
+            }
 
             $emailExists = User::where('email', $email)->count();
             if($emailExists === 0){
@@ -61,15 +72,15 @@ class AuthController extends Controller
                 ]);
 
                 if(!$token) {
-                    return view('auth', ['result' => 'Falha ao gerar token de autenticação']);
+                    return redirect()->back()->withInput()->withErrors(['Falha na autenticacao']);
                 }
             }else{
-                return view('auth', ['result' => 'Email já cadastrado']);
+                return redirect()->back()->withInput()->withErrors(['Este email ja foi cadastrado']);
             }
         }else{
-            return view('auth', ['result' => 'Dados incorretos']);
+            return redirect()->back()->withInput()->withErrors(['Dados incorretos']);
         }
-        return redirect()->route('dashboard');
+        return redirect()->route('cref');
     }
     public function logout()
     {

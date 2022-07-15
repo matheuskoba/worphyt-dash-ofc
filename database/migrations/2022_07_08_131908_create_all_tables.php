@@ -23,6 +23,8 @@ return new class extends Migration
             $table->float('stars')->default(5);
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
+            $table->string('cref')->nullable();
+            $table->date('dt_nasc')->nullable();
             $table->timestamps();
         });
         Schema::create('userfavorites', function (Blueprint $table) {
