@@ -35,13 +35,34 @@
                                 <div class="name-service">
                                     <div class="price-name">
                                         <p>{{ $service->name }}</p>
-                                        <h6>{{ $service->price }}</h6>
+                                        <h6>R$ {{ number_format($service->price, 2) }}</h6>
                                     </div>
                                     <span>{{ $service->description }}</span>
                                 </div>
                                 <div class="buttons-service">
-                                    <button onclick="document.getElementById('open-modal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button onclick="document.getElementById('open-modal-{{ $service->id }}').style.display='block'"><i class="fa-solid fa-pen-to-square"></i></button>
                                     <button onclick="window.location='{{ route('deleteService', $id = $service->id) }}'"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <div style="display: none" id="open-modal-{{ $service->id }}" class="modal">
+                                <div class="modal-content">
+                                    <div class="modal-title">
+                                        <span onclick="document.getElementById('open-modal-{{ $service->id }}').style.display='none'">&times;</span>
+                                        <h2>EDITAR SERVIÇO</h2>
+                                    </div>
+                                    <form method="POST" action="{{ route('updateservice', ['id' => $service->id]) }}">
+                                        @csrf
+                                        <label for="sname">Nome do serviço</label>
+                                        <input type="text" id="sname" name="servicename" value="{{ $service->name }}">
+
+                                        <label for="sprice">Preço do serviço</label>
+                                        <input type="number" step="0.01" id="sprice" name="serviceprice" value="{{ $service->price }}">
+
+                                        <label for="sdescription">Descrição do serviço</label>
+                                        <input type="text" id="sdescription" name="servicedescription" value="{{ $service->description }}">
+
+                                        <input type="submit" value="Salvar">
+                                    </form>
                                 </div>
                             </div>
                         @endforeach
@@ -69,28 +90,6 @@
                     </form>
                 </div>
             </div>
-            <div style="display: none" id="open-modal" class="modal">
-                <div class="modal-content">
-                    <div class="modal-title">
-                        <span onclick="document.getElementById('open-modal').style.display='none'">&times;</span>
-                        <h2>EDITAR SERVIÇO</h2>
-                    </div>
-                    <form method="POST" action="/">
-                        @csrf
-                        <label for="sname">Nome do serviço</label>
-                        <input type="text" id="sname" name="servicename" placeholder="Digite o nome do serviço">
-
-                        <label for="sprice">Preço do serviço</label>
-                        <input type="number" id="sprice" name="pricename" placeholder="Digite o preço do serviço">
-
-                        <label for="sdescription">Descrição do serviço</label>
-                        <input type="text" id="sdescription" name="description" placeholder="Digite a descrição do serviço">
-
-                        <input type="submit" value="Salvar">
-                    </form>
-                </div>
-            </div>
         </div>
-
     </body>
 </html>

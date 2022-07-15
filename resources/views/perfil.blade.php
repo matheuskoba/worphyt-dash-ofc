@@ -23,22 +23,22 @@
             </div>
             <div class="profile">
                 <p>Seus dados</p>
-                <div class="card-profile">
-                    <div class="card-header">
-                        <img src="{{ asset('img/user.png') }}" alt="profile">
-                        <button onclick="document.getElementById('editmodal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i> </button>
-                        <h3>{{ $name }}</h3>
-                        <p>Bacharel em Educação Física</p>
-                        <p>{{ $email }}</p>
-                        <p>Brasília - DF</p>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <h4> 3.5 </h4>
-                        <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>
-                    </div>
+                <div class="card-cover">
+                    <img src="{{ asset('img/capaoficial.png') }}" alt="coverphoto"/>
+                </div>
+                <div class="card-info">
+                    <img src="{{ asset('img/user.png') }}" alt="profile">
+                    <button onclick="document.getElementById('editmodal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i> </button>
+                    <h3>{{ $name }}</h3>
+                    <p class="formation">Bacharel em Educação Física</p>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <h4> 3.5 </h4>
+                    <p>Brasília - DF</p>
+                    <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>
                 </div>
                 <div class="card-container">
                     <p>Suas avaliações</p>
@@ -55,7 +55,7 @@
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star-half-stroke"></i>
                                 <i class="fa-regular fa-star"></i>
-                                <h4> 13/07/2022 <h4>
+                                <h4> 13/07/2022 </h4>
                             </div>
                         </div>
                     </div>

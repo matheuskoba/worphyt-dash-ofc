@@ -11,7 +11,10 @@ class AuthController extends Controller
 {
     public function authentication()
     {
-       return view('auth', ['result' => '']);
+        if (Auth::check()) {
+            return redirect()->route('dashboard');
+        }
+       return view('auth');
     }
     public function login(Request $request)
     {

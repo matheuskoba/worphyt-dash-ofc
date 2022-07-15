@@ -46,7 +46,7 @@ class PersonalController extends Controller
         if (Auth::check()) {
             $user = User::find(Auth()->user());
             $services = PersonalServices::select()->where('id_personal', $user[0]->id)->get();
-
+            \Log::info($services);
             if ($services->isNotEmpty()) {
                 return view('dashboard', ['services' => $services], ['name' => $user[0]->name]);
             } else {
@@ -55,7 +55,33 @@ class PersonalController extends Controller
         }
         return view('auth');
     }
+    public function updateService(Request $request, $id)
+    {
+        if (Auth::check()) {
+            $servicename = $request->input('servicename');
+            $serviceprice = $request->input('serviceprice');
+            $servicedescription = $request->input('servicedescription');
 
+            $service = PersonalServices::find($request->id);
+
+            if ($servicename)  {
+                $service->name = $servicename;
+            }
+
+            if ($serviceprice) {
+                $service->price = $serviceprice;
+            }
+
+            if ($servicedescription) {
+                $service->description = $servicedescription;
+            }
+
+            $service->save();
+
+            return redirect()->route('dashboard');
+;        }
+        return redirect()->route('auth');
+    }
     public function deleteService($id)
     {
         if (Auth::check()) {
@@ -73,7 +99,7 @@ class PersonalController extends Controller
                 return view('perfil', ['name' => $user[0]->name], ['email' => $user[0]->email]);
             }
         }
-        return view('auth');
+        return redirect()->route('auth');
     }
     public function showSchedule()
     {
@@ -84,7 +110,7 @@ class PersonalController extends Controller
                 return view('agenda', ['name' => $user[0]->name]);
             }
         }
-        return view('auth');
+        return redirect()->route('auth');
     }
 }
 
