@@ -6,7 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Entrar</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/authstyle.css') }}" >
-        <link href='https://fonts.googleapis.com/css?family=Racing Sans One' rel='stylesheet'>
     </head>
     <body id="body">
         <div class="container">
@@ -29,6 +28,13 @@
                         <input id="email" name="email" type="email" value="matheusk2013@outlook.com" placeholder="Email">
                         <input id="password" name="password" type="password" placeholder="Senha">
                         <input type="submit" value="Entrar">
+                        <div class="remember">
+                            <div>
+                                <input type="checkbox" id="rememberme" name="rememberme">
+                                <label for="rememberme">Lembrar-me</label>
+                            </div>
+                            <a href="/">Esqueci a senha</a>
+                        </div>
                         @if($errors->all())
                             @foreach($errors->all() as $error)
                                 <p style="color: red">{{ $error }}</p>
@@ -42,10 +48,14 @@
                         @csrf
                         <img class="logo" src="{{ asset('img/logob.png') }}" alt="logo">
                         <h3>Cadastro</h3>
-                        <input id="nome" name="name" type="text" placeholder="Nome">
+                        <input id="nome" name="name" type="text" placeholder="Nome Completo">
                         <input id="email" name="email" type="text" placeholder="Email">
                         <input id="senha" name="password" type="password" placeholder="Senha">
                         <input id="confirmaSenha" name="confirmPassword" type="password" placeholder="Confirme a senha">
+                        <div class="check">
+                            <input type="checkbox" id="term" name="term" value="Term">
+                            <label for="term"> Eu aceito os temos de privacidade</label>
+                        </div>
                         <input id="cad" type="submit" value="Cadastrar">
                     </form>
                 </div>

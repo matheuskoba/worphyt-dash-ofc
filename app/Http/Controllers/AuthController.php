@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
@@ -63,6 +64,8 @@ class AuthController extends Controller
                 $newPersonal->password = $hash;
                 $newPersonal->tipo = 0;
                 $newPersonal->save();
+
+                event(new Registered($newPersonal));
 
                 $user = User::find(Auth()->user());
 

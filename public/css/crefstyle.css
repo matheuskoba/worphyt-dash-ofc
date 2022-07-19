@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display-swap');
 *
 {
     margin: 0;
@@ -17,11 +16,12 @@ body
 .container
 {
     text-align: center;
+    color: white;
 }
 .container img
 {
     position: relative;
-    top: -5rem;
+    top: -3rem;
 }
 h3
 {
@@ -35,8 +35,9 @@ form
 }
 p
 {
-    color: white;
+    color: #bebebe;
     margin-top: 15px;
+    font-style: italic;
 }
 input
 {
@@ -65,4 +66,9 @@ input:focus-visible
     background-color: #004aad;
     border-color: #004aad;
     color: white;
+}
+.container form div .checkcref
+{
+    margin-bottom: 20px;
+    margin-top: 20px;
 }

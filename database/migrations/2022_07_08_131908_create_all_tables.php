@@ -24,7 +24,8 @@ return new class extends Migration
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('cref')->nullable();
-            $table->date('dt_nasc')->nullable();
+            $table->date('dt_nasc')->nullable()->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
         Schema::create('userfavorites', function (Blueprint $table) {

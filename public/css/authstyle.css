@@ -23,7 +23,7 @@ body.active
 {
     position: relative;
     width: 800px;
-    height: 500px;
+    height: 550px;
     margin: 20px;
 }
 .bluebg
@@ -130,7 +130,6 @@ body.active
 }
 .formBx .form form input
 {
-    width: 100%;
     margin-bottom: 20px;
     padding: 10px;
     outline: none;
@@ -147,13 +146,41 @@ body.active
     max-width: 100vh;
     cursor: pointer;
 }
+.formBx .form form .remember
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.formBx .form form .remember input[type="checkbox"]
+{
+    margin-bottom: 0 !important;
+    margin-right: 5px;
+}
+.formBx .form form .remember a
+{
+    text-decoration: none;
+    color: black;
+}
+.formBx .form form .remember a:hover
+{
+    color: #004aad;
+}
+.formBx .form form .check
+{
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.formBx .form form .check input[type="checkbox"]
+{
+    width: 20px;
+    margin-bottom: 0;
+}
 .formBx.active .signupForm input[type="submit"]
 {
     background: #004aad;
-}
-.formBx .form form .forgot
-{
-    color: #333;
 }
 
 @media (max-width: 991px)

@@ -51,9 +51,9 @@ class PersonalController extends Controller
             $services = PersonalServices::select()->where('id_personal', $user[0]->id)->get();
 
             if ($services->isNotEmpty()) {
-                return view('dashboard', ['services' => $services], ['name' => $user[0]->name]);
+                return view('dashboard', ['services' => $services], ['user' => $user[0]]);
             } else {
-                return view('dashboard', ['services' => null],['name' => $user[0]->name]);
+                return view('dashboard', ['services' => null],['user' => $user[0]]);
             }
         }
         return redirect()->route('auth');
@@ -99,7 +99,7 @@ class PersonalController extends Controller
             $user = User::find(Auth()->user());
 
             if ($user) {
-                return view('perfil', ['name' => $user[0]->name], ['email' => $user[0]->email]);
+                return view('perfil', ['user' => $user[0]]);
             }
         }
         return redirect()->route('auth');
@@ -110,7 +110,7 @@ class PersonalController extends Controller
             $user = User::find(Auth()->user());
 
             if ($user) {
-                return view('agenda', ['name' => $user[0]->name]);
+                return view('agenda', ['user' => $user[0]]);
             }
         }
         return redirect()->route('auth');

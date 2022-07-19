@@ -25,7 +25,7 @@ body
 }
 .all-services .t-header button
 {
-    width: 30px;
+    width: 50px;
     height: 30px;
     border-radius: 10px;
     border: solid 1px #004aad;
@@ -157,6 +157,11 @@ body
     margin: 8px 0;
     background: none;
     color: white;
+}
+.modal .modal-content form input[type=number]::-webkit-outer-spin-button,
+.modal .modal-content form input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 .modal .modal-content form input[type=text]:focus-visible,
 .modal .modal-content form input[type=number]:focus-visible

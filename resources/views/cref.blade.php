@@ -12,15 +12,21 @@
     <div class="container">
         <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
         <div class="">
-            <h3 style="color: white;">Informe o seu CREF:</h3>
+            <h3 style="color: white;">Informe o seu CREF ativo para continuar:</h3>
         </div>
         <form method="POST" action="{{ route('addcref') }}">
             @csrf
             <div>
-                <input id="cref" type="text" name="cref" maxlength="11" placeholder="Digite aqui o número do seu CREF" />
+                <input id="cref" type="text" name="cref" maxlength="11" placeholder="Digite aqui o seu CREF" />
             </div>
             <div>
                 <p>Exemplo: 000000-G/DF</p>
+                <div class="checkcref">
+                    <input type="checkbox" id="activecref" name="activecref" required>
+                    <label for="activecref">Estou ciente que preciso ter meu cref ativo e regularizado.</label><br>
+                </div>
+                <input type="checkbox" id="formation" name="formation" required>
+                <label for="formation">Declaro que sou <b>Bacharel em Educação Física.</b></label>
             </div>
             <div>
                 <button type="submit"><i class="fa-solid fa-angle-right"></i></button>

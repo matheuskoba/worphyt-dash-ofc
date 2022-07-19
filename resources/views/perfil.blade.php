@@ -15,7 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
     <body>
-        <x-pack-navbar :name="$name"/>
+        <x-pack-navbar :user="$user"/>
         <div class="container">
             <div class="head">
                 <h2>Dashboard</h2>
@@ -29,14 +29,23 @@
                 <div class="card-info">
                     <img src="{{ asset('img/user.png') }}" alt="profile">
                     <button onclick="document.getElementById('editmodal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i> </button>
-                    <h3>{{ $name }}</h3>
+                    <h3>{{ $user->name }}</h3>
                     <p class="formation">Bacharel em Educação Física</p>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <h4> 3.5 </h4>
+                    @php $starPersonal = $user->stars; @endphp
+                    @foreach(range(1,5) as $i)
+                        <span class="fa-stack" style="width:1em">
+                            <i class="far fa-star fa-stack-1x"></i>
+                            @if($starPersonal >0)
+                                @if($starPersonal >0.5)
+                                    <i class="fas fa-star fa-stack-1x"></i>
+                                @else
+                                    <i class="fas fa-star-half fa-stack-1x"></i>
+                                @endif
+                            @endif
+                            @php $starPersonal--; @endphp
+                        </span>
+                    @endforeach
+                    <h4>{{ number_format($user->stars, 1) }}</h4>
                     <p>Brasília - DF</p>
                     <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>
                 </div>
@@ -76,7 +85,7 @@
                         <input type="text" id="formation" name="formation" placeholder="Altere sua formação">
 
                         <label for="email">Email</label>
-                        <input type="text" id="email" name="email" value="{{ $email }}">
+                        <input type="text" id="email" name="email" value="{{ $user->email }}">
 
                         <label for="address">Endereço</label>
                         <input type="text" id="adress" name="adress" placeholder="Altere seu endereço">

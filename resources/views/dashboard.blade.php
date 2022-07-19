@@ -15,11 +15,11 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
     <body>
-        <x-pack-navbar :name="$name"/>
+        <x-pack-navbar :user="$user"/>
         <div class="container">
             <div class="title">
                 <h2>Dashboard</h2>
-                <p>Início</p>
+                <p>Serviços</p>
             </div>
             <div class="all-services">
                 <div class="t-header">
@@ -56,7 +56,7 @@
                                         <input type="text" id="sname" name="servicename" value="{{ $service->name }}">
 
                                         <label for="sprice">Preço do serviço</label>
-                                        <input type="number" step="0.01" id="sprice" name="serviceprice" value="{{ $service->price }}">
+                                        <input type="number" step="0.01" id="sprice" name="serviceprice" value="{{ number_format($service->price, 2) }}">
 
                                         <label for="sdescription">Descrição do serviço</label>
                                         <input type="text" id="sdescription" name="servicedescription" value="{{ $service->description }}">
