@@ -1,0 +1,78 @@
+body
+{
+    -webkit-font-smoothing: antialiased;
+    font-family: Montserrat, sans-serif;
+    text-rendering: optimizeLegibility;
+    background: #000000;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container
+{
+    text-align: center;
+}
+
+.main-container button
+{
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 50px;
+    padding: 10px 20px 10px 20px;
+    color: white;
+}
+
+.main-container button .fa-arrow-right
+{
+    font-size: 25px;
+}
+
+.main-container button:hover
+{
+    background-color: #004aad;
+    border-radius: 10px;
+}
+
+.main-container .logo
+{
+    width: 25rem;
+}
+
+.main-container .contents img
+{
+    width: 70px;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.main-container .contents p
+{
+    color: white;
+    margin-bottom: 20px;
+}
+
+.main-container .contents textarea
+{
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    background: #101010;
+    color: white;
+    width: 30rem;
+    height: 10rem;
+}
+
+.main-container .contents textarea:focus-visible
+{
+    outline: none;
+}
+
+.main-container .contents textarea::placeholder
+{
+    text-align: center;
+
+}

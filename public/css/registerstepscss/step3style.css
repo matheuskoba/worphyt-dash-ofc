@@ -1,0 +1,49 @@
+body
+{
+    -webkit-font-smoothing: antialiased;
+    font-family: Montserrat, sans-serif;
+    text-rendering: optimizeLegibility;
+    background: #000000;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container
+{
+    text-align: center;
+}
+
+.main-container button
+{
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 50px;
+    padding: 10px 20px 10px 20px;
+    color: white;
+}
+
+.main-container button .fa-arrow-right
+{
+    font-size: 25px;
+}
+
+.main-container button:hover
+{
+    background-color: #004aad;
+    border-radius: 10px;
+}
+
+.main-container .logo
+{
+    width: 25rem;
+}
+
+.main-container .contents img
+{
+    width: 70px;
+    background-color: white;
+    border-radius: 50px;
+}

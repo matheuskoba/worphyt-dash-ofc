@@ -16,12 +16,21 @@ use App\Http\Controllers\SiteController;
 |
 */
 
-Route::post('dashboard/authentication/login', [AuthController::class, 'login'])->name('auth.login');
-Route::get('dashboard/authentication/logout', [AuthController::class, 'logout'])->name('auth.logout');
-Route::post('dashboard/authentication/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('/dashboard/authentication/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/dashboard/authentication/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::post('/dashboard/authentication/register', [AuthController::class, 'register'])->name('auth.register');
 Route::get('/dashboard/authentication/emailverify', function(){
     return view('verifyEmail');
 })->name('verification.email');
+Route::get('/dashboard/authentication/registerstep1', function(){
+    return view('registersteps.registerstep1');
+});
+Route::get('/dashboard/authentication/registerstep2', function(){
+    return view('registersteps.registerstep2');
+});
+Route::get('/dashboard/authentication/registerstep3', function(){
+    return view('registersteps.registerstep3');
+});
 
 Route::get('/dashboard/authentication', [AuthController::class, 'authentication'])->name('auth');
 Route::get('/dashboard/agenda', [PersonalController::class, 'showSchedule']);
@@ -32,10 +41,6 @@ Route::get('/dashboard', [PersonalController::class, 'showServices'])->name('das
 Route::get('/dashboard/deleteservice/{id}', [PersonalController::class, 'deleteService'])->name('deleteService');
 Route::post('/dashboard/updateservice/{id}', [PersonalController::class, 'updateService'])->name('updateservice');
 
-Route::get('/dashboard/authentication/cref', function () {
-    return view('cref');
-})->name('cref');
-Route::post('/dashboard/authentication/cref/addcref', [PersonalController::class, 'addcref'])->name('addcref');
 
 Route::get('/', [SiteController::class, 'site']);
 

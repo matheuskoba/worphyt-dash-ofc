@@ -30,7 +30,7 @@ class AuthController extends Controller
             if ($user[0]->cref != null) {
                 return redirect()->route('dashboard');
             } else {
-                return redirect()->route('cref');
+                return redirect()->route('dashboard');
             }
         }
         return redirect()->back()->withInput()->withErrors(['Email e/ou senha estão incorretos']);
@@ -83,7 +83,7 @@ class AuthController extends Controller
         }else{
             return redirect()->back()->withInput()->withErrors(['Dados incorretos']);
         }
-        return redirect()->route('cref');
+        return redirect()->route('');
     }
     public function logout()
     {

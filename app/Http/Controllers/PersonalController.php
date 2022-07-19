@@ -45,9 +45,7 @@ class PersonalController extends Controller
     {
         if (Auth::check()) {
             $user = User::find(Auth()->user());
-            if ($user[0]->cref === null) {
-                return redirect()->route('cref');
-            }
+
             $services = PersonalServices::select()->where('id_personal', $user[0]->id)->get();
 
             if ($services->isNotEmpty()) {
