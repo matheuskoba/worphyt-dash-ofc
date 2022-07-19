@@ -31,6 +31,18 @@ Route::get('/dashboard/authentication/registerstep2', function(){
 Route::get('/dashboard/authentication/registerstep3', function(){
     return view('registersteps.registerstep3');
 });
+Route::get('/dashboard/authentication/registerstep4', function(){
+    return view('registersteps.registerstep4');
+});
+Route::get('/dashboard/authentication/registerstep5', function(){
+    return view('registersteps.registerstep5');
+});
+Route::get('/dashboard/authentication/registerstep6', function(){
+    return view('registersteps.registerstep6');
+});
+Route::get('/dashboard/authentication/registerstep7', function(){
+    return view('registersteps.registerstep7');
+});
 
 Route::get('/dashboard/authentication', [AuthController::class, 'authentication'])->name('auth');
 Route::get('/dashboard/agenda', [PersonalController::class, 'showSchedule']);
