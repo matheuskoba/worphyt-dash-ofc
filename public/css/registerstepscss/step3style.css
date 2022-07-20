@@ -29,21 +29,77 @@ body
 {
     font-size: 25px;
 }
-
 .main-container button:hover
 {
     background-color: #004aad;
     border-radius: 10px;
 }
-
 .main-container .logo
 {
     width: 25rem;
 }
-
-.main-container .contents img
+.main-container form .contents input
 {
-    width: 70px;
-    background-color: white;
-    border-radius: 50px;
+    width: 100%;
+    display: inline-block;
+    border: none;
+    box-sizing: border-box;
+    margin: 8px 0;
+    background: none;
+    color: white;
+}
+
+.main-container form .contents input:focus-visible
+{
+    outline: none;
+}
+
+.main-container form .contents
+{
+    color: white;
+    font-size: 13px;
+    margin-bottom: 50px;
+    justify-content: space-between;
+    display: flex;
+}
+.main-container form h1
+{
+    font-size: 20px;
+    color: white;
+}
+.main-container form h1 i
+{
+margin-left: 20px;
+}
+.main-container form .contents span
+{
+    border: none;
+    background: transparent;
+    color: white;
+    width: 45px
+}
+
+.main-container form .contents .inputminorprice,
+.main-container form .contents .inputmajorprice,
+.main-container form .contents .inputhourclass,
+.main-container form .contents .inputprice
+{
+    box-shadow: 1px 1px #004aad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #101010;
+    padding: 10px;
+    border-radius: 10px;
+    width: 10rem;
+
+}
+.main-container form .contents
+{
+    width: 100%;
+}
+.main-container form .contents input input::placeholder
+{
+    padding-left: 10px;
 }
