@@ -9,33 +9,9 @@ body
     justify-content: center;
     align-items: center;
 }
-
 .main-container
 {
     text-align: center;
-}
-
-.main-container button
-{
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-top: 50px;
-    padding: 10px 20px 10px 20px;
-    color: white;
-}
-
-.main-container button .fa-arrow-right
-{
-    font-size: 25px;
-}
-.main-container button:hover
-{
-    background-color: #004aad;
-    border-radius: 10px;
-}
-.main-container .logo
-{
     width: 25rem;
 }
 .main-container form .contents input
@@ -48,28 +24,49 @@ body
     background: none;
     color: white;
 }
-
 .main-container form .contents input:focus-visible
 {
     outline: none;
 }
-
+.main-container form .contents input::-webkit-outer-spin-button,
+.main-container form .contents input::-webkit-inner-spin-button
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+button
+{
+    text-decoration: none;
+    color: white;
+}
+button:hover
+{
+    color: #004aad;
+}
 .main-container form .contents
 {
     color: white;
     font-size: 13px;
-    margin-bottom: 50px;
-    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main-container form .fieldwrapper
+{
+    color: white;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -40px;
 }
 .main-container form h1
 {
     font-size: 20px;
     color: white;
-}
-.main-container form h1 i
-{
-margin-left: 20px;
+    margin-bottom: 30px;
 }
 .main-container form .contents span
 {
@@ -78,11 +75,7 @@ margin-left: 20px;
     color: white;
     width: 45px
 }
-
-.main-container form .contents .inputminorprice,
-.main-container form .contents .inputmajorprice,
-.main-container form .contents .inputhourclass,
-.main-container form .contents .inputprice
+.main-container form .contents .box-input
 {
     box-shadow: 1px 1px #004aad;
     display: flex;
@@ -93,13 +86,34 @@ margin-left: 20px;
     padding: 10px;
     border-radius: 10px;
     width: 10rem;
-
 }
-.main-container form .contents
+.main-container form button
 {
-    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
-.main-container form .contents input input::placeholder
+.main-container form .submit
 {
-    padding-left: 10px;
+    margin-top: 50px;
+    padding: 10px 20px 10px 20px;
+    color: white;
+}
+.main-container form .submit .fa-arrow-right
+{
+    font-size: 25px;
+}
+.main-container form .submit:hover
+{
+    background-color: #004aad;
+    border-radius: 10px;
+}
+.fa-trash
+{
+    margin-bottom: 20px;
+}
+.inputhourclass,
+.inputprice
+{
+    margin-right: 20px;
 }

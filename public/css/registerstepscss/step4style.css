@@ -1,6 +1,5 @@
 body
 {
-    -webkit-font-smoothing: antialiased;
     font-family: Montserrat, sans-serif;
     text-rendering: optimizeLegibility;
     background: #000000;
@@ -8,42 +7,55 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
 }
 .main-container
 {
     text-align: center;
+}
+.main-container p
+{
+    margin-right: 20px;
 }
 .main-container div
 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
 }
-.main-container div p
+.main-container div label
 {
     color: white;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 .main-container div .fa-plus
 {
-    margin-left: 10px;
     font-size: 20px;
-    padding: 10px 20px 10px 20px;
     border-radius: 10px;
 }
 .main-container div .fa-plus:hover,
 .main-container div .fa-trash:hover
 {
     cursor: pointer;
-    background-color: #004aad;
+    color: #004aad;
 }
-.main-container i
+.main-container form .contents
 {
-    color: white;
+    display: flex;
+    justify-content: space-around;
 }
-.main-container img
+.main-container form .experimental
 {
-    width: 25rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 350px;
+    margin-bottom: 20px;
+}
+.main-container form input[type="checkbox"]
+{
+    display: none;
 }
 .main-container form input
 {
@@ -59,40 +71,33 @@ body
 {
     outline: none;
 }
-.main-container form .inputwhatsapp span,
-.main-container form .inputinstagram span,
-.main-container form .inputcref span
+.main-container form span
 {
     border: none;
     background: transparent;
     color: white;
     width: 45px
 }
-.main-container form .inputwhatsapp,
-.main-container form .inputinstagram,
-.main-container form .inputcref
+.main-container form .box-input
 {
     box-shadow: 1px 1px #004aad;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
     background-color: #101010;
     padding: 10px;
     border-radius: 10px;
 }
-.main-container form .inputwhatsapp input,
-.main-container form .inputinstagram input,
-.main-container form .inputcref input
+.main-container form input
 {
     width: 100%;
     margin-left: 5px;
 }
-.main-container form .inputwhatsapp input::placeholder,
-.main-container form .inputinstagram input::placeholder,
-.main-container form .inputcref input::placeholder
+
+.main-container form input:-webkit-autofill
 {
-    padding-left: 10px;
+    -webkit-box-shadow: 0 0 0 30px #101010   inset;
+    -webkit-text-fill-color: rgb(255, 255, 255) !important;
 }
 .main-container button
 {
@@ -110,9 +115,4 @@ body
 {
     background-color: #004aad;
     border-radius: 10px;
-}
-input:-webkit-autofill
-{
-    -webkit-box-shadow: 0 0 0 30px #101010   inset;
-    -webkit-text-fill-color: rgb(255, 255, 255) !important;
 }
