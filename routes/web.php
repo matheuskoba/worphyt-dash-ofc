@@ -31,6 +31,8 @@ Route::get('/dashboard/authentication/registerstep2', function(){
 Route::get('/dashboard/authentication/registerstep3', function(){
     return view('registersteps.registerstep3');
 });
+Route::post('/dashboard/authentication/registerstep3/save', [PersonalController::class, 'personalprice'])->name('personalprice');
+
 Route::get('/dashboard/authentication/registerstep4', function(){
     return view('registersteps.registerstep4');
 });

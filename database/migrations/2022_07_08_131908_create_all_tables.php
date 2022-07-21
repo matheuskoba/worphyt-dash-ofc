@@ -24,7 +24,14 @@ return new class extends Migration
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('cref')->nullable();
-            $table->date('dt_nasc')->nullable()->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('description')->nullable();
+            $table->string('minorprice')->nullable();
+            $table->string('majorprice')->nullable();
+            $table->string('trialtime')->nullable();
+            $table->boolean('face_to_face_service')->default(false);
+            $table->boolean('remote_service')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
@@ -43,7 +50,6 @@ return new class extends Migration
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
         });
-
         Schema::create('personals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -54,6 +60,32 @@ return new class extends Migration
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->timestamps();
+        });
+        Schema::create('personalserviceregion', function (Blueprint $table){
+            $table->id();
+            $table->integer('id_personal');
+            $table->string('region');
+        });
+        Schema::create('personalgym', function (Blueprint $table){
+           $table->id();
+           $table->integer('id_personal');
+           $table->string('gym');
+        });
+        Schema::create('personallanguage', function (Blueprint $table){
+           $table->id();
+           $table->integer('id_personal');
+           $table->string('language');
+        });
+        Schema::create('personalspecialty', function (Blueprint $table){
+           $table->id();
+           $table->integer('id_personal');
+           $table->string('specialty');
+        });
+        Schema::create('personalpromotionalpacks', function (Blueprint $table){
+            $table->id();
+            $table->integer('id_personal');
+            $table->string('hours');
+            $table->string('pricepromotional');
         });
         Schema::create('personalphotos', function (Blueprint $table) {
             $table->id();

@@ -15,7 +15,8 @@
     <body>
         <div class="main-container">
             <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('personalprice') }}">
+                @csrf
                 <div class="contents">
                     <div class="inputminorprice box-input">
                         <span>
@@ -46,10 +47,10 @@
             $(document).ready(function() {
                 $("#add").click(function() {
                     var lastField = $("#buildyourform div:last");
-                    var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
+                    var intId = (lastField && lastField.length && lastField.data("idx") ? +1 : 1);
                     var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
                     fieldWrapper.data("idx", intId);
-                    var fName = $("<div class=\"contents\"><div class=\"inputhourclass box-input\"><span><i class=\"fa-solid fa-clock\"></i> </span><input type=\"number\" name=\"hourclass\" placeholder=\"Hora aula\"></div><div class=\"inputprice box-input\"><span><i class=\"fa-solid fa-brazilian-real-sign\"></i></span><input type=\"number\" name=\"price\" placeholder=\"Preço\"></div></div>");
+                    var fName = $("<div class=\"contents\"><div class=\"inputhourclass box-input\"><span><i class=\"fa-solid fa-clock\"></i> </span><input type=\"number\" name=\"hourclass[]\"placeholder=\"Hora aula\"></div><div class=\"inputprice box-input\"><span><i class=\"fa-solid fa-brazilian-real-sign\"></i></span><input type=\"number\" name=\"price[]\" placeholder=\"Preço\"></div></div>");
                     var removeButton = $("<button id=\"remove\"><i class=\"fa-solid fa-trash\"></i></button>");
                     removeButton.click(function() {
                         $(this).parent().remove();

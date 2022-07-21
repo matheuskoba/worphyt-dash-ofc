@@ -129,6 +129,10 @@ class PersonalController extends Controller
         }
         return redirect()->back()->withInput()->withErrors(['Informe um CREF valido']);
     }
+    public function personalprice(Request $request)
+    {
+        var_dump($request->all());
+    }
 }
 
 
