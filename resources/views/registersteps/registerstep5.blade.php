@@ -10,16 +10,19 @@
 
     {{-- Fontawesome --}}
     <script src="https://kit.fontawesome.com/92e90f8568.js" crossorigin="anonymous"></script>
-
+    <script src="http://code.jquery.com/jquery-1.5.2rc1.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="main-container">
     <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
-    <div>
-        <p>Idiomas</p>
-        <i class="fa-solid fa-plus"></i>
-    </div>
     <form method="POST" action="">
+        <div class="plus box">
+            <p>Idiomas</p>
+            <button type="button" id="add" class="plusbutton"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <div id="buildyourform">
+
+        </div>
         <div class="inputlanguage">
                 <span>
                     <i class="fa-solid fa-language"></i>

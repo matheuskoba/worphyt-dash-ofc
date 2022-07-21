@@ -13,11 +13,21 @@ body
 {
     text-align: center;
 }
-.main-container p
+.main-container form .input .fa-toggle-on,
+.main-container form .input .fa-toggle-off
+{
+    font-size: 20px;
+    padding: 10px 20px 10px 30px;
+}
+.main-container form .specialties p
 {
     margin-right: 20px;
 }
-.main-container div
+.main-container form .specialties .addbutton
+{
+    margin-top: 0px;
+}
+.main-container .box
 {
     display: flex;
     justify-content: center;
@@ -44,6 +54,17 @@ body
 {
     display: flex;
     justify-content: space-around;
+}
+.main-container form .fieldwrapper
+{
+    color: white;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 50px;
 }
 .main-container form .experimental
 {
@@ -78,7 +99,7 @@ body
     color: white;
     width: 45px
 }
-.main-container form .box-input
+.main-container .box-input
 {
     box-shadow: 1px 1px #004aad;
     display: flex;
@@ -93,7 +114,6 @@ body
     width: 100%;
     margin-left: 5px;
 }
-
 .main-container form input:-webkit-autofill
 {
     -webkit-box-shadow: 0 0 0 30px #101010   inset;
@@ -104,8 +124,12 @@ body
     background: none;
     border: none;
     cursor: pointer;
-    margin-top: 50px;
     padding: 10px 20px 10px 20px;
+    color: white;
+}
+.main-container .arrow
+{
+    margin-top: 50px;
 }
 .main-container button .fa-arrow-right
 {
@@ -113,6 +137,5 @@ body
 }
 .main-container button:hover
 {
-    background-color: #004aad;
-    border-radius: 10px;
+    color: #004aad;
 }
