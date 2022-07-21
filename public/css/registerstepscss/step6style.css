@@ -13,12 +13,11 @@ body
 {
     text-align: center;
 }
-.main-container div
+.main-container .box
 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
 }
 .main-container div p
 {
@@ -26,16 +25,25 @@ body
 }
 .main-container div .fa-plus
 {
-    margin-left: 10px;
     font-size: 20px;
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
 }
-.main-container div .fa-plus:hover,
-.main-container div .fa-trash:hover
+.main-container form button i:hover
 {
     cursor: pointer;
-    background-color: #004aad;
+    color: #004aad;
+}
+.main-container form .fieldwrapper
+{
+    color: white;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 50px;
 }
 .main-container i
 {
@@ -76,7 +84,6 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
     background-color: #101010;
     padding: 10px;
     border-radius: 10px;
@@ -99,17 +106,10 @@ body
     background: none;
     border: none;
     cursor: pointer;
-    margin-top: 50px;
-    padding: 10px 20px 10px 20px;
 }
 .main-container button .fa-arrow-right
 {
     font-size: 25px;
-}
-.main-container button:hover
-{
-    background-color: #004aad;
-    border-radius: 10px;
 }
 input:-webkit-autofill
 {
