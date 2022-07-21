@@ -18,7 +18,7 @@
             <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
             <form method="POST" action="">
                 <div class="box">
-                    <p>Academias</p>
+                    <p>Academias que você atende</p>
                     <button type="button" id="add"><i class="fa-solid fa-plus"></i></button>
                 </div>
                 <div id="buildyourform">

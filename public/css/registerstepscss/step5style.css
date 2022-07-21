@@ -24,7 +24,7 @@ body
 }
 .main-container form .plus .plusbutton
 {
-    margin-top: 0px;
+    margin-top: 0;
     font-size: 20px;
 }
 .main-container form .check
@@ -39,10 +39,6 @@ body
 .main-container i
 {
     color: white;
-}
-.main-container img
-{
-    width: 25rem;
 }
 .main-container form input:focus-visible
 {

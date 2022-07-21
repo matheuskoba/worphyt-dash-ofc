@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SiteController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,15 +24,18 @@ Route::get('/dashboard/authentication/emailverify', function(){
     return view('verifyEmail');
 })->name('verification.email');
 Route::get('/dashboard/authentication/registerstep1', function(){
-    return view('registersteps.registerstep1');
-});
+    $user = User::find(\Auth()->user());
+    return view('registersteps.registerstep1', ['user' => $user[0]]);
+})->name('registerstep1');
+Route::post('/dashboard/authentication/registerstep1/update1', [PersonalController::class, 'personalinfo'])->name('personalinfo');
+
 Route::get('/dashboard/authentication/registerstep2', function(){
     return view('registersteps.registerstep2');
 });
 Route::get('/dashboard/authentication/registerstep3', function(){
     return view('registersteps.registerstep3');
 });
-Route::post('/dashboard/authentication/registerstep3/save', [PersonalController::class, 'personalprice'])->name('personalprice');
+Route::post('/dashboard/authentication/registerstep3/update3', [PersonalController::class, 'personalprice'])->name('personalprice');
 
 Route::get('/dashboard/authentication/registerstep4', function(){
     return view('registersteps.registerstep4');

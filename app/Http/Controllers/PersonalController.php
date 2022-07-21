@@ -48,6 +48,10 @@ class PersonalController extends Controller
 
             $services = PersonalServices::select()->where('id_personal', $user[0]->id)->get();
 
+            if ($user[0]->cref === null) {
+                return redirect()->route('registerstep1');
+            }
+
             if ($services->isNotEmpty()) {
                 return view('dashboard', ['services' => $services], ['user' => $user[0]]);
             } else {
@@ -96,6 +100,10 @@ class PersonalController extends Controller
         if (Auth::check()) {
             $user = User::find(Auth()->user());
 
+            if ($user[0]->cref === null) {
+                return redirect()->route('registerstep1');
+            }
+
             if ($user) {
                 return view('perfil', ['user' => $user[0]]);
             }
@@ -113,21 +121,9 @@ class PersonalController extends Controller
         }
         return redirect()->route('auth');
     }
-    public function addcref(Request $request)
+    public function personalinfo(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'cref' => 'required'
-        ]);
-
-        if (!$validator->fails()) {
-            $user = User::find(Auth::user())->first();
-
-            $user->cref = $request->input('cref');
-            $user->save();
-
-            return redirect()->route('dashboard');
-        }
-        return redirect()->back()->withInput()->withErrors(['Informe um CREF valido']);
+        var_dump($request->all());
     }
     public function personalprice(Request $request)
     {

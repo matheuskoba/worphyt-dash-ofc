@@ -11,14 +11,15 @@ body
 .main-container
 {
     text-align: center;
+    width: 25rem;
+}
+.main-container h1
+{
+    font-size: 20px;
 }
 .main-container i
 {
     color: white;
-}
-.main-container img
-{
-    width: 100%;
 }
 .main-container .contents
 {
