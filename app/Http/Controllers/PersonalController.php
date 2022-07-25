@@ -49,7 +49,7 @@ class PersonalController extends Controller
             $services = PersonalServices::select()->where('id_personal', $user[0]->id)->get();
 
             if ($user[0]->cref === null) {
-                return redirect()->route('registerstep1');
+                return redirect()->route('step1');
             }
 
             if ($services->isNotEmpty()) {
@@ -101,7 +101,7 @@ class PersonalController extends Controller
             $user = User::find(Auth()->user());
 
             if ($user[0]->cref === null) {
-                return redirect()->route('registerstep1');
+                return redirect()->route('step1');
             }
 
             if ($user) {
@@ -123,9 +123,52 @@ class PersonalController extends Controller
     }
     public function personalinfo(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'whatsapp' => 'required',
+            'instagram' => 'required',
+            'cref' => 'required',
+        ]);
+
+        if (!$validator->fails()) {
+            $whatsapp = $request->input('whatsapp');
+            $instagram = $request->input('instagram');
+            $cref = $request->input('cref');
+
+            $user = User::find(Auth()->user());
+
+            if ($user) {
+                $user->whatsapp = $whatsapp;
+                $user->instagram = $instagram;
+                $user->cref = $cref;
+                $user->save();
+
+                return redirect()->route('step2');
+            }
+        }else{
+            return redirect()->back()->withInput()->withErrors(['Preencha todos os campos']);
+        }
+    }
+    public function personalprofile(Request $request)
+    {
         var_dump($request->all());
     }
     public function personalprice(Request $request)
+    {
+        var_dump($request->all());
+    }
+    public function personalspecialties(Request $request)
+    {
+        var_dump($request->all());
+    }
+    public function personallanguages(Request $request)
+    {
+        var_dump($request->all());
+    }
+    public function personalgyms(Request $request)
+    {
+        var_dump($request->all());
+    }
+    public function personalregions(Request $request)
     {
         var_dump($request->all());
     }

@@ -15,7 +15,8 @@
     <body>
         <div class="main-container">
             <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('personallanguages') }}">
+                @csrf
                 <div class="plus box">
                     <p>Idiomas</p>
                     <button type="button" id="add" class="plusbutton"><i class="fa-solid fa-plus"></i></button>

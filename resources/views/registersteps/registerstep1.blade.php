@@ -40,6 +40,11 @@
                     </span>
                     <input maxlength="11" type="text" name="cref" placeholder="CREF">
                 </div>
+                @if($errors->all())
+                    @foreach($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                @endif
                 <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
             </form>
         </div>

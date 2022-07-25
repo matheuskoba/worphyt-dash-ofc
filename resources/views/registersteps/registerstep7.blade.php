@@ -18,7 +18,8 @@
         <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
         <div>
         </div>
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('personalregions') }}">
+            @csrf
             <div class="main-container">
                 <div class="box">
                 <p>Regiões de atendimento</p>

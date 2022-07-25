@@ -16,7 +16,8 @@
     <body>
         <div class="main-container">
             <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('personalspecialties') }}">
+                @csrf
                 <div class="input box">
                     <label>
                         <input type="checkbox" class="hidden" name="experimental" checked="checked" />

@@ -16,7 +16,8 @@
     <body>
         <div class="main-container">
             <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('personalgyms') }}">
+                @csrf
                 <div class="box">
                     <p>Academias que você atende</p>
                     <button type="button" id="add"><i class="fa-solid fa-plus"></i></button>
