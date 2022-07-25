@@ -13,12 +13,11 @@ body
 {
     text-align: center;
 }
-.main-container div
+.main-container .box
 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
 }
 .main-container div p
 {
@@ -26,24 +25,28 @@ body
 }
 .main-container div .fa-plus
 {
-    margin-left: 10px;
     font-size: 20px;
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
 }
-.main-container div .fa-plus:hover,
-.main-container div .fa-trash:hover
+.main-container form button i:hover
 {
     cursor: pointer;
-    background-color: #004aad;
+    color: #004aad;
+}
+.main-container form .fieldwrapper
+{
+    color: white;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 .main-container i
 {
     color: white;
-}
-.main-container img
-{
-    width: 25rem;
 }
 .main-container form input
 {
@@ -59,38 +62,29 @@ body
 {
     outline: none;
 }
-.main-container form .inputwhatsapp span,
-.main-container form .inputinstagram span,
-.main-container form .inputcref span
+.main-container form .inputregions span
 {
     border: none;
     background: transparent;
     color: white;
     width: 45px
 }
-.main-container form .inputwhatsapp,
-.main-container form .inputinstagram,
-.main-container form .inputcref
+.main-container form .contents .box-input
 {
     box-shadow: 1px 1px #004aad;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
     background-color: #101010;
     padding: 10px;
     border-radius: 10px;
 }
-.main-container form .inputwhatsapp input,
-.main-container form .inputinstagram input,
-.main-container form .inputcref input
+.main-container form .inputregions input
 {
     width: 100%;
     margin-left: 5px;
 }
-.main-container form .inputwhatsapp input::placeholder,
-.main-container form .inputinstagram input::placeholder,
-.main-container form .inputcref input::placeholder
+.main-container form .inputregions input::placeholder
 {
     padding-left: 10px;
 }
@@ -99,17 +93,10 @@ body
     background: none;
     border: none;
     cursor: pointer;
-    margin-top: 50px;
-    padding: 10px 20px 10px 20px;
 }
 .main-container button .fa-arrow-right
 {
     font-size: 25px;
-}
-.main-container button:hover
-{
-    background-color: #004aad;
-    border-radius: 10px;
 }
 input:-webkit-autofill
 {

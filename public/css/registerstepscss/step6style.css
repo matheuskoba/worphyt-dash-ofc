@@ -43,7 +43,6 @@ body
     justify-content: center;
     margin-top: 10px;
     margin-bottom: 20px;
-    margin-left: 50px;
 }
 .main-container i
 {
@@ -63,18 +62,14 @@ body
 {
     outline: none;
 }
-.main-container form .inputwhatsapp span,
-.main-container form .inputinstagram span,
-.main-container form .inputcref span
+.main-container form .inputgym span
 {
     border: none;
     background: transparent;
     color: white;
     width: 45px
 }
-.main-container form .inputwhatsapp,
-.main-container form .inputinstagram,
-.main-container form .inputcref
+.main-container form .inputgym
 {
     box-shadow: 1px 1px #004aad;
     display: flex;
@@ -84,16 +79,12 @@ body
     padding: 10px;
     border-radius: 10px;
 }
-.main-container form .inputwhatsapp input,
-.main-container form .inputinstagram input,
-.main-container form .inputcref input
+.main-container form .inputgym input
 {
     width: 100%;
     margin-left: 5px;
 }
-.main-container form .inputwhatsapp input::placeholder,
-.main-container form .inputinstagram input::placeholder,
-.main-container form .inputcref input::placeholder
+.main-container form .inputgym input::placeholder
 {
     padding-left: 10px;
 }
