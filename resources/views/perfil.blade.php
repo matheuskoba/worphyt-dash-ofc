@@ -23,9 +23,9 @@
             </div>
             <div class="profile">
                 <p>Seus dados</p>
-                <div class="card-cover">
-                    <img src="{{ asset('img/capaoficial.png') }}" alt="coverphoto"/>
-                </div>
+{{--                <div class="card-cover">--}}
+{{--                    <img src="{{ asset('img/capaoficial.png') }}" alt="coverphoto"/>--}}
+{{--                </div>--}}
                 <div class="card-info">
                     <div class="card-perfil">
                         <div class="infos">
@@ -41,35 +41,40 @@
                                     <p class="minorprice">R$80~</p>
                                     <p class="majorprice">R$100</p>
                                 </div>
-                                <div>
+                                <div class="aula-experimental">
                                     <p>Aula experimental</p>
-                                    <p>1h</p>
+                                    <p class="p-style">1h</p>
                                 </div>
-                                <div>
+                                <div class="tipo-atendimento">
                                     <p>Atendimento</p>
-                                    <p>presencial e remoto</p>
+                                    <p class="p-style">presencial e remoto</p>
                                 </div>
                             </div>
                         </div>
                         <button onclick="document.getElementById('editmodal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i> </button>
                     </div>
                     @php $starPersonal = $user->stars; @endphp
-                    @foreach(range(1,5) as $i)
-                        <span class="fa-stack" style="width:1em">
-                            <i class="far fa-star fa-stack-1x"></i>
-                            @if($starPersonal >0)
-                                @if($starPersonal >0.5)
-                                    <i class="fas fa-star fa-stack-1x"></i>
-                                @else
-                                    <i class="fas fa-star-half fa-stack-1x"></i>
-                                @endif
-                            @endif
-                            @php $starPersonal--; @endphp
-                        </span>
-                    @endforeach
-                    <h4>{{ number_format($user->stars, 1) }}</h4>
-                    <p>Brasília - DF</p>
-                    <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>
+                    <div class="contents">
+                        <div class="rate">
+                            @foreach(range(1,5) as $i)
+                                <span class="fa-stack" style="width:1em">
+                                    <i class="far fa-star fa-stack-1x"></i>
+                                    @if($starPersonal >0)
+                                        @if($starPersonal >0.5)
+                                            <i class="fas fa-star fa-stack-1x"></i>
+                                        @else
+                                            <i class="fas fa-star-half fa-stack-1x"></i>
+                                        @endif
+                                    @endif
+                                    @php $starPersonal--; @endphp
+                                </span>
+                            @endforeach
+                        </div>
+                        <h4>{{ number_format($user->stars, 1) }}</h4>
+                        <div class="personaldescription">
+                            <p>Meu trabalho como instrutora vem desde 2011 buscando sempre as melhores atualizações na área para complementar as aulas. Tenho experiência em trabalhar com treinamentos específicos para a necessidade e objetivo do aluno, de maneira que as aulas sejam prazerosas e com a melhor adesão possível.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-container">
                     <p>Suas avaliações</p>
@@ -95,6 +100,7 @@
                     </div>
                 </div>
             </div>
+            <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>
             <div style="display: none" id="editmodal" class="modal">
                 <div class="modal-content">
                     <div class="modal-title">
