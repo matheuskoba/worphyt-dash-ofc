@@ -31,7 +31,7 @@
                             <span>
                                 <i class="fa-regular fa-clock"></i>
                             </span>
-                            <input type="text" name="time" placeholder="Tempo de aula">
+                            <input type="text" name="trialtime" placeholder="Tempo de aula">
                         </div>
                     </div>
                 </div>
@@ -42,6 +42,11 @@
                 <div id="buildyourform">
 
                 </div>
+                @if($errors->all())
+                    @foreach($errors->all() as $error)
+                        <p style="color: red">{{ $error }}</p>
+                    @endforeach
+                @endif
                 <button class="arrow"><i class="fa-solid fa-arrow-right"></i> </button>
             </form>
         </div>

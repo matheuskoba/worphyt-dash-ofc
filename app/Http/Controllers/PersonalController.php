@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\PersonalServices;
 use App\Models\User;
 use App\Models\PersonalPromotionalPacks;
+use App\Models\PersonalSpecialty;
+use App\Models\PersonalLanguage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -190,11 +192,49 @@ class PersonalController extends Controller
     }
     public function personalspecialties(Request $request)
     {
-        var_dump($request->all());
+        $validator = Validator::make($request->all(), [
+            'specialty' => 'required'
+        ]);
+
+        if (!$validator->fails()) {
+            $specialty = $request->input('specialty');
+            $trialtime = $request->input('trialtime');
+
+            $user = User::find(Auth()->user())->first();
+            if ($user) {
+                $user->trialtime = $trialtime;
+                $user->save();
+
+                if ($specialty) {
+                    $newSpecialty = new PersonalSpecialty();
+                    $newSpecialty->id_personal = $user->id;
+                    $newSpecialty->specialty = $specialty;
+                    $newSpecialty->save();
+                }
+            }
+            return redirect()->route('step5');
+        }
+        return redirect()->back()->withInput()->withErrors(['Preencha no mínimo uma especialidade']);
     }
     public function personallanguages(Request $request)
     {
-        var_dump($request->all());
+        $validator = Validator::make($request->all(), [
+            'language' => 'required'
+        ]);
+
+        if (!$validator->fails()) {
+            $language = $request->input('language');
+
+            $user = User::find(Auth()->user())->first();
+            if ($language) {
+                $newLanguage = new PersonalLanguage();
+                $newLanguage->id_personal = $user->id;
+                $newLanguage->language = $language;
+                $newLanguage->save();
+            }
+            return redirect()->route('step6');
+        }
+        return redirect()->back()->withInput()->withErrors(['Preencha no mínimo seu idioma nativo']);
     }
     public function personalgyms(Request $request)
     {

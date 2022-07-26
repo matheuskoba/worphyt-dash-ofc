@@ -24,6 +24,11 @@
                 <div id="buildyourform">
 
                 </div>
+                @if($errors->all())
+                    @foreach($errors->all() as $error)
+                        <p style="color: red">{{ $error }}</p>
+                    @endforeach
+                @endif
                 <div class="check adjust">
                     <div class="check presential">
                         <input type="checkbox" name="presential" id="presential">
@@ -44,7 +49,7 @@
                 var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
                 var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
                 fieldWrapper.data("idx", intId);
-                var fName = $("<div class=\"contents\"><div class=\"inputlanguage\"><span><i class=\"fa-solid fa-language\"></i></span><input type=\"text\" name=\"langauge\" placeholder=\"Idioma\"></div></div>");
+                var fName = $("<div class=\"contents\"><div class=\"inputlanguage\"><span><i class=\"fa-solid fa-language\"></i></span><input type=\"text\" name=\"language\" placeholder=\"Idioma\"></div></div>");
                 var removeButton = $("<button id=\"remove\"><i class=\"fa-solid fa-trash\"></i></button>");
                 removeButton.click(function() {
                     $(this).parent().remove();
