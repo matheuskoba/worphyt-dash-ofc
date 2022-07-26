@@ -143,12 +143,11 @@ class PersonalController extends Controller
                 $user->cref = $cref;
                 $user->save();
 
-
                 return redirect()->route('step2');
             }
-        }else{
-            return redirect()->back()->withInput()->withErrors(['Preencha todos os campos']);
+            return redirect()->back()->withInput()->withErrors(['Ocorreu um erro']);
         }
+        return redirect()->back()->withInput()->withErrors(['Preencha todos os campos']);
     }
     public function personalprofile(Request $request)
     {
@@ -164,8 +163,8 @@ class PersonalController extends Controller
         if (!$validator->fails()) {
             $minorprice = $request->input('minorprice');
             $majorprice = $request->input('majorprice');
-            $hourclass = $request->input('hours');
-            $price = $request->input('pricepromotional');
+            $hourclasses = $request->input('hourclass');
+            $promotionalprices = $request->input('price');
 
             $user = User::find(Auth()->user())->first();
             if ($user) {
@@ -173,15 +172,17 @@ class PersonalController extends Controller
                 $user->majorprice = $majorprice;
                 $user->save();
 
-                @foreach (array_combine($hourclasses, $promotionalprices) as $hourclass => $promotionalprice)
-                    if ($hourclass !== '' && $price !== '') {
+                $arrays = array_combine($hourclasses, $promotionalprices);
+
+                foreach ($arrays as $hourclass => $promotionalprice) {
+                    if ($hourclass !== '' && $promotionalprice !== '') {
                         $newPersonalPacks = new PersonalPromotionalPacks();
                         $newPersonalPacks->id_personal = $user->id;
                         $newPersonalPacks->hours = $hourclass;
-                        $newPersonalPacks->pricepromotional = $price;
+                        $newPersonalPacks->pricepromotional = $promotionalprice;
                         $newPersonalPacks->save();
                     }
-                @endforeach
+                }
                 return redirect()->route('step4');
             }
         }
