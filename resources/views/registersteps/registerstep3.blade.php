@@ -38,6 +38,11 @@
                 <div id="buildyourform">
 
                 </div>
+                @if($errors->all())
+                    @foreach($errors->all() as $error)
+                        <p style="color: red">{{ $error }}</p>
+                    @endforeach
+                @endif
                 <button type="submit" class="submit">
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>

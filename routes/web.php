@@ -36,27 +36,27 @@ Route::post('/dashboard/authentication/registerstep2/update2', [PersonalControll
 
 Route::get('/dashboard/authentication/registerstep3', function(){
     return view('registersteps.registerstep3');
-});
+})->name('step3');
 Route::post('/dashboard/authentication/registerstep3/update3', [PersonalController::class, 'personalprice'])->name('personalprice');
 
 Route::get('/dashboard/authentication/registerstep4', function(){
     return view('registersteps.registerstep4');
-});
+})->name('step4');
 Route::post('/dashboard/authentication/registerstep4/update4', [PersonalController::class, 'personalspecialties'])->name('personalspecialties');
 
 Route::get('/dashboard/authentication/registerstep5', function(){
     return view('registersteps.registerstep5');
-});
+})->name('step5');
 Route::post('/dashboard/authentication/registerstep5/update5', [PersonalController::class, 'personallanguages'])->name('personallanguages');
 
 Route::get('/dashboard/authentication/registerstep6', function(){
     return view('registersteps.registerstep6');
-});
+})->name('step6');
 Route::post('/dashboard/authentication/registerstep6/update6', [PersonalController::class, 'personalgyms'])->name('personalgyms');
 
 Route::get('/dashboard/authentication/registerstep7', function(){
     return view('registersteps.registerstep7');
-});
+})->name('step7');
 Route::post('/dashboard/authentication/registerstep7/update7', [PersonalController::class, 'personalregions'])->name('personalregions');
 
 Route::get('/dashboard/authentication', [AuthController::class, 'authentication'])->name('auth');

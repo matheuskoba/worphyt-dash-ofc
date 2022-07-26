@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PersonalServices;
 use App\Models\User;
+use App\Models\PersonalPromotionalPacks;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -134,13 +135,14 @@ class PersonalController extends Controller
             $instagram = $request->input('instagram');
             $cref = $request->input('cref');
 
-            $user = User::find(Auth()->user());
+            $user = User::find(Auth()->user())->first();
 
             if ($user) {
                 $user->whatsapp = $whatsapp;
                 $user->instagram = $instagram;
                 $user->cref = $cref;
                 $user->save();
+
 
                 return redirect()->route('step2');
             }
@@ -154,7 +156,36 @@ class PersonalController extends Controller
     }
     public function personalprice(Request $request)
     {
-        var_dump($request->all());
+        $validator = Validator::make($request->all(), [
+            'minorprice' => 'required',
+            'majorprice' => 'required',
+        ]);
+
+        if (!$validator->fails()) {
+            $minorprice = $request->input('minorprice');
+            $majorprice = $request->input('majorprice');
+            $hourclass = $request->input('hours');
+            $price = $request->input('pricepromotional');
+
+            $user = User::find(Auth()->user())->first();
+            if ($user) {
+                $user->minorprice = $minorprice;
+                $user->majorprice = $majorprice;
+                $user->save();
+
+                @foreach (array_combine($hourclasses, $promotionalprices) as $hourclass => $promotionalprice)
+                    if ($hourclass !== '' && $price !== '') {
+                        $newPersonalPacks = new PersonalPromotionalPacks();
+                        $newPersonalPacks->id_personal = $user->id;
+                        $newPersonalPacks->hours = $hourclass;
+                        $newPersonalPacks->pricepromotional = $price;
+                        $newPersonalPacks->save();
+                    }
+                @endforeach
+                return redirect()->route('step4');
+            }
+        }
+        return redirect()->back()->withInput()->withErrors(['Preencha todos os campos']);
     }
     public function personalspecialties(Request $request)
     {
