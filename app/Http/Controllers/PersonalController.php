@@ -101,9 +101,9 @@ class PersonalController extends Controller
         if (Auth::check()) {
             $user = User::find(Auth()->user());
 
-            if ($user[0]->cref === null) {
-                return redirect()->route('step1');
-            }
+//            if ($user[0]->cref === null) {
+//                return redirect()->route('step1');
+//            }
 
             if ($user) {
                 return view('perfil', ['user' => $user[0]]);

@@ -36,17 +36,38 @@ body
 }
 .container .profile .card-info
 {
-    margin-top: -52px;
-    width: 100%;
-    text-align: center;
+    padding: 3rem;
+    background-color: #0F0F0F;
     color: white;
+}
+.container .profile .card-info .card-perfil
+{
+    display: flex;
+    justify-content: space-between;
+}
+.container .profile .card-info .card-perfil .infos
+{
+    display: flex;
+}
+.container .profile .card-info .infos .prices
+{
+    display: flex;
+    margin-top: 3px;
+    margin-left: 20px;
+}
+.container .profile .card-info .infos .prices .minorprice,
+.container .profile .card-info .infos .prices .majorprice
+{
+    color: #505050;
+    font-weight: lighter;
+    font-size: 13px;
 }
 .container .profile .card-info img
 {
-    width: 9rem;
+    width: 13rem;
     background: white;
-    border-radius: 80px;
-    margin-left: 60px;
+    border-radius: 30px;
+    margin-right: 20px;
 }
 .container .profile .card-info h3
 {
@@ -59,27 +80,17 @@ body
     color: white;
     margin-top: 5px;
 }
-.container .profile .card-info .formation
-{
-    margin-top: -24px;
-    color: #505050;
-    font-weight: lighter;
-    font-size: 13px;
-    margin-bottom: 15px;
-}
 .container .profile .card-info p
 {
-    margin-top: -12px;
-    margin-bottom: 80px;
-    font-size: 15px;
     color: white;
 }
 .container .profile .card-info button
 {
-    position: relative;
     background: none;
-    float: right;
     border: none;
+    width: 70px;
+    height: 3rem;
+    margin-top: 12px;
 }
 .container .profile .card-info button:hover
 {

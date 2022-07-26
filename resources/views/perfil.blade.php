@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Worphyt Dashboard</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Worphyt Dashboard</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/perfilstyle.css') }}" >
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/perfilstyle.css') }}" >
 
-    {{-- Fontawesome --}}
-    <script src="https://kit.fontawesome.com/92e90f8568.js" crossorigin="anonymous"></script>
-    {{-- Jquery --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        {{-- Fontawesome --}}
+        <script src="https://kit.fontawesome.com/92e90f8568.js" crossorigin="anonymous"></script>
+        {{-- Jquery --}}
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
     <body>
         <x-pack-navbar :user="$user"/>
@@ -27,10 +27,32 @@
                     <img src="{{ asset('img/capaoficial.png') }}" alt="coverphoto"/>
                 </div>
                 <div class="card-info">
-                    <img src="{{ asset('img/user.png') }}" alt="profile">
-                    <button onclick="document.getElementById('editmodal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i> </button>
-                    <h3>{{ $user->name }}</h3>
-                    <p class="formation">Bacharel em Educação Física</p>
+                    <div class="card-perfil">
+                        <div class="infos">
+                            <img src="{{ asset('img/user.png') }}" alt="profile">
+                            <div>
+                                <h3>{{ $user->name }}</h3>
+                                <p><i class="fa-brands fa-instagram"></i>@matheuskoba</p>
+                                <p><i class="fa-brands fa-whatsapp"></i>(61)9 9914-8523</p>
+                                <p><i class="fa-solid fa-id-card-clip"></i>000000G-/DF</p>
+                            </div>
+                            <div>
+                                <div class="prices">
+                                    <p class="minorprice">R$80~</p>
+                                    <p class="majorprice">R$100</p>
+                                </div>
+                                <div>
+                                    <p>Aula experimental</p>
+                                    <p>1h</p>
+                                </div>
+                                <div>
+                                    <p>Atendimento</p>
+                                    <p>presencial e remoto</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="document.getElementById('editmodal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i> </button>
+                    </div>
                     @php $starPersonal = $user->stars; @endphp
                     @foreach(range(1,5) as $i)
                         <span class="fa-stack" style="width:1em">
