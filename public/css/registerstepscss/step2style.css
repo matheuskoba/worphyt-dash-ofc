@@ -44,6 +44,7 @@ body
     color: white;
     width: 30rem;
     height: 10rem;
+    resize: none;
 }
 .main-container .contents textarea:focus-visible
 {

@@ -19,13 +19,18 @@
                 @csrf
                 <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
                 <div class="contents">
-                    <img id="blah" src="{{ asset('img/user.png') }}" alt="profile">
+                    <img id="img" src="{{ asset('img/user.png') }}" alt="profile">
                     <label><p>Editar Foto</p></label>
                     <input type="file" class="form-control" name="image" onchange="readURL(this);">
                     <textarea type="text" name="description" placeholder="Descrição"></textarea>
                 </div>
                 <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
             </form>
+            @if($errors->all())
+                @foreach($errors->all() as $error)
+                    <p style="color: red">{{ $error }}</p>
+                @endforeach
+            @endif
         </div>
     </body>
     <script>
@@ -34,7 +39,7 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result).width(70).height(70);
+                $('#img').attr('src', e.target.result).width(70).height(70);
                 };
 
                 reader.readAsDataURL(input.files[0]);

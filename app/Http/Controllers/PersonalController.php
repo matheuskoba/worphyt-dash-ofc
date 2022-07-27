@@ -142,22 +142,28 @@ class PersonalController extends Controller
     public function personalprofile(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'description' => 'required'
+            'description' => 'required',
+            'image' => 'required'
         ]);
-
+        \Log::info($request->all());
         if (!$validator->fails()) {
-            $description = $request->textarea('description');
+            $description = $request->input('description');
+            $avatar = $request->file('image');
 
             $user = User::find(Auth()->user())->first();
 
-            if ($user) {
+            if ($user === true && $request->has('image')) {
+                $imageName = time().'.'.$avatar->getClientOriginalExtension();
+                $avatar->move(public_path('images'), $imageName);
+                $user->avatar = $imageName;
                 $user->description = $description;
                 $user->save();
 
                 return redirect()->route('step3');
             }
+            return redirect()->back()->withInput()->withErrors(['teste']);
         }
-        return redirect()->back()->withInput()->withErrors(['Preencha no mínimo um local']);
+        return redirect()->back()->withInput()->withErrors(['A imagem precisa ser menor ou igual a 1024px']);
     }
     public function personalprice(Request $request)
     {
