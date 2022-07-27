@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -17,23 +18,29 @@ class AuthController extends Controller
         }
        return view('auth');
     }
-    public function login(Request $request)
+    public function login(AuthRequest $request)
     {
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
+        $validated = $request->validated();
+        \Log::info($validated);
+        if ($validated) {
 
-        if(Auth::attempt($credentials)){
-            $user = User::find(Auth()->user());
+            $credentials = [
+                'email' => $request->email,
+                'password' => $request->password,
+            ];
 
-            if ($user[0]->cref != null) {
-                return redirect()->route('dashboard');
-            } else {
-                return redirect()->route('dashboard');
+            if (Auth::attempt($credentials)) {
+                $user = User::find(Auth()->user());
+
+                if ($user[0]->cref != null) {
+                    return redirect()->route('dashboard');
+                } else {
+                    return redirect()->route('dashboard');
+                }
             }
+            return redirect()->back()->withInput()->withErrors(['Email e/ou senha estão incorretos']);
         }
-        return redirect()->back()->withInput()->withErrors(['Email e/ou senha estão incorretos']);
+        return redirect()->back()->withInput()->withErrors(['Preencha todos os campos']);
     }
     public function register(Request $request)
     {
