@@ -20,6 +20,7 @@ body
     color: #004aad;
     margin-top: 30px;
     font-weight: normal;
+    margin-right: 12px;
 }
 
 .container .profile .card-cover
@@ -53,7 +54,7 @@ body
 {
     display: flex;
     margin-top: 3px;
-    margin-left: 20px;
+    margin-left: auto;
 }
 .container .profile .card-info .infos .prices .minorprice,
 .container .profile .card-info .infos .prices .majorprice
@@ -61,12 +62,13 @@ body
     color: #707070;
     font-weight: lighter;
     font-size: 13px;
+    margin-right: 1px;
 }
 .container .profile .card-info .card-perfil .infos .tipo-atendimento .p-style,
 .container .profile .card-info .card-perfil .infos .aula-experimental .p-style
 {
     color: #707070;
-    margin-left: 10px;
+    margin-left: 1px;
 }
 .container .profile .card-info img
 {
