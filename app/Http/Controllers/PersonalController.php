@@ -11,13 +11,16 @@ use App\Models\PersonalGym;
 use App\Models\PersonalServiceRegion;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PersonalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function createService(Request $request)
     {
-        if (Auth::check()) {
             $validator = Validator::make($request->all(), [
                 'nameservice' => 'required',
                 'priceservice' => 'required',
@@ -42,13 +45,10 @@ class PersonalController extends Controller
                 return redirect()->route('dashboard');
             }
             return redirect()->back()->withInput()->withErrors(['Algo deu errado']);
-        }
-        return redirect()->route('auth', ['Errors' => 'Sessã́o encerrada, faça o login novamente']);
     }
 
     public function showServices()
     {
-        if (Auth::check()) {
             $user = User::find(Auth()->user());
 
             $services = PersonalServices::select()->where('id_personal', $user[0]->id)->get();
@@ -62,12 +62,9 @@ class PersonalController extends Controller
             } else {
                 return view('dashboard', ['services' => null],['user' => $user[0]]);
             }
-        }
-        return redirect()->route('auth');
     }
     public function updateService(Request $request, $id)
     {
-        if (Auth::check()) {
             $servicename = $request->input('servicename');
             $serviceprice = $request->input('serviceprice');
             $servicedescription = $request->input('servicedescription');
@@ -89,20 +86,14 @@ class PersonalController extends Controller
             $service->save();
 
             return redirect()->route('dashboard');
-        }
-        return redirect()->route('auth');
     }
     public function deleteService($id)
     {
-        if (Auth::check()) {
-            $service = PersonalServices::where('id', $id)->delete();
-            return redirect()->route('dashboard');
-        }
-        return redirect()->route('auth');
+        $service = PersonalServices::where('id', $id)->delete();
+        return redirect()->route('dashboard');
     }
     public function showPerfil()
     {
-        if (Auth::check()) {
             $user = User::find(Auth()->user());
 
 //            if ($user[0]->cref === null) {
@@ -112,19 +103,14 @@ class PersonalController extends Controller
             if ($user) {
                 return view('perfil', ['user' => $user[0]]);
             }
-        }
-        return redirect()->route('auth');
     }
     public function showSchedule()
     {
-        if (Auth::check()) {
-            $user = User::find(Auth()->user());
+        $user = User::find(Auth()->user());
 
-            if ($user) {
-                return view('agenda', ['user' => $user[0]]);
-            }
+        if ($user) {
+            return view('agenda', ['user' => $user[0]]);
         }
-        return redirect()->route('auth');
     }
     public function personalinfo(Request $request)
     {

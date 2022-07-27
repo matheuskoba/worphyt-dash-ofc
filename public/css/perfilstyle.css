@@ -4,7 +4,7 @@ body
 }
 .container
 {
-    padding: 78px 100px 100px 100px;
+    padding: 78px 70px 100px 70px;
 }
 .container .head h2
 {
@@ -22,7 +22,6 @@ body
     font-weight: normal;
     margin-right: 12px;
 }
-
 .container .profile .card-cover
 {
     background: #000000;
@@ -54,7 +53,7 @@ body
 {
     display: flex;
     margin-top: 3px;
-    margin-left: auto;
+    margin-left: 15px;
 }
 .container .profile .card-info .infos .prices .minorprice,
 .container .profile .card-info .infos .prices .majorprice
@@ -64,11 +63,21 @@ body
     font-size: 13px;
     margin-right: 1px;
 }
+.container .profile .card-info .card-perfil .infos .tipo-atendimento,
+.container .profile .card-info .card-perfil .infos .aula-experimental
+{
+    display: flex;
+}
 .container .profile .card-info .card-perfil .infos .tipo-atendimento .p-style,
 .container .profile .card-info .card-perfil .infos .aula-experimental .p-style
 {
     color: #707070;
     margin-left: 1px;
+}
+.container .profile .card-info .card-perfil .infos div p .icon
+{
+    color: white;
+    margin-right: 15px;
 }
 .container .profile .card-info img
 {
@@ -93,25 +102,28 @@ body
 {
     color: white;
 }
-.container .profile .card-info button
+.container .profile .card-info .card-perfil .button-edit button
 {
-    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: #004aad;
+    width: 150px;
     border: none;
-    width: 70px;
     height: 3rem;
     margin-top: 12px;
+    margin-bottom: 25px;
 }
-.container .profile .card-info button:hover
+.container .profile .card-info .card-perfil .button-edit button:hover
 {
     cursor: pointer;
-    background-color: #004aad;
-    border-radius: 10px;
 }
 .container .profile .card-info button .fa-pen-to-square
 {
     color: white;
     font-size: 20px;
-    padding: 10px 20px 10px 20px;
+    margin-right: 5px;
 }
 .container .profile .card-info i
 {
@@ -213,6 +225,50 @@ body
     display: flex;
     width: auto;
 }
+.container .card
+{
+    background-color: #0F0F0F;
+    padding: 20px;
+    margin-top: 50px;
+}
+.container .card .card-header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px white;
+}
+.container .card .card-header h3
+{
+    color: white;
+}
+.container .card .card-header button
+{
+    background-color: #004aad;
+    border: none;
+    color: white;
+    width: 10rem;
+    height: 40px;
+}
+.container .card .card-header button:hover
+{
+    cursor: pointer;
+}
+.container .card .card-footer
+{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.container .card .card-footer p
+{
+    color: white;
+    margin-left: 20px;
+}
+.container .card .card-footer i
+{
+    color: white;
+}
 .modal
 {
     padding: 20px 20px 20px 20px;
@@ -291,11 +347,52 @@ body
         padding: 80px 10px 10px 10px;
     }
     .container .profile .card-container .description p
-{
-    width: auto;
-    padding-left: 10%;
-    margin-top: -20px;
-    margin-left: 20px;
-}
-
+    {
+        width: auto;
+        padding-left: 10%;
+        margin-top: -20px;
+        margin-left: 20px;
+    }
+    .container .profile .card-info
+    {
+        text-align: center;
+    }
+    .container .profile .card-info .card-perfil
+    {
+        display: block;
+    }
+    .container .profile .card-info .card-perfil .infos
+    {
+        display: block;
+    }
+    .container .profile .card-info .card-perfil .infos div .prices,
+    .container .profile .card-info .card-perfil .infos div .aula-experimental,
+    .container .profile .card-info .card-perfil .infos div .tipo-atendimento
+    {
+        justify-content: center;
+    }
+    .container .profile .card-info .card-perfil .button-edit
+    {
+        display: flex;
+        justify-content: center;
+    }
+    .container .profile .card-info .contents
+    {
+        display: block;
+    }
+    .container .profile .card-info .contents .rate
+    {
+        display: block;
+        left: 0;
+        margin-top: 0;
+    }
+    .container .profile .card-info .contents h4
+    {
+        margin-top: 0;
+    }
+    .container .profile .card-info .contents .personaldescription
+    {
+        margin-left: 0;
+        margin-top: 0;
+    }
 }

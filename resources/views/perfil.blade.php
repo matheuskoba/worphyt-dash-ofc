@@ -32,9 +32,9 @@
                             <img src="{{ asset('img/user.png') }}" alt="profile">
                             <div>
                                 <h3>{{ $user->name }}</h3>
-                                <p><i class="fa-brands fa-instagram"></i>@matheuskoba</p>
-                                <p><i class="fa-brands fa-whatsapp"></i>(61)9 9914-8523</p>
-                                <p><i class="fa-solid fa-id-card-clip"></i>000000G-/DF</p>
+                                <p><i class="fa-brands fa-instagram icon"></i>@matheuskoba</p>
+                                <p><i class="fa-brands fa-whatsapp icon"></i>(61) 9 9914-8523</p>
+                                <p><i class="fa-solid fa-id-card-clip icon"></i>000000G-/DF</p>
                             </div>
                             <div>
                                 <div class="prices">
@@ -42,16 +42,18 @@
                                     <p class="majorprice">R$100</p>
                                 </div>
                                 <div class="aula-experimental">
-                                    <p>Aula experimental</p>
+                                    <p>Aula experimental:</p>
                                     <p class="p-style">1h</p>
                                 </div>
                                 <div class="tipo-atendimento">
-                                    <p>Atendimento</p>
+                                    <p>Atendimento:</p>
                                     <p class="p-style">presencial e remoto</p>
                                 </div>
                             </div>
                         </div>
-                        <button onclick="document.getElementById('editmodal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i> </button>
+                        <div class="button-edit">
+                            <button onclick="document.getElementById('editmodal').style.display='block'"><i class="fa-solid fa-pen-to-square"></i>Editar Perfil</button>
+                        </div>
                     </div>
                     @php $starPersonal = $user->stars; @endphp
                     <div class="contents">
@@ -98,6 +100,56 @@
                     <div class="description">
                         <p> Muito bom, chegou na hora. O Personal me tratou melhor que minha família. </p>
                     </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Idiomas</h3>
+                    <button type="button">Adicionar Idioma</button>
+                </div>
+                <div class="card-footer">
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                    <p>Ingles</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Especialidades</h3>
+                    <button type="button">Adicionar Especialidade</button>
+                </div>
+                <div class="card-footer">
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                    <p>Emagrecimento</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Academias</h3>
+                    <button type="button">Adicionar Academia</button>
+                </div>
+                <div class="card-footer">
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                    <p>Bluefit</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Bairros</h3>
+                    <button type="button">Adicionar Bairro</button>
+                </div>
+                <div class="card-footer">
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                    <p>Taguatinga Norte</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Pacotes Promocionais</h3>
+                    <button type="button">Adicionar Pacote</button>
+                </div>
+                <div class="card-footer">
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                    <p>14h - R$1000</p>
                 </div>
             </div>
             <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>

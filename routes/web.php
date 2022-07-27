@@ -20,9 +20,11 @@ use App\Models\User;
 Route::post('/dashboard/authentication/login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('/dashboard/authentication/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::post('/dashboard/authentication/register', [AuthController::class, 'register'])->name('auth.register');
+
 Route::get('/dashboard/authentication/emailverify', function(){
     return view('verifyEmail');
 })->name('verification.email');
+
 Route::get('/dashboard/authentication/registerstep1', function(){
     $user = User::find(\Auth()->user());
     return view('registersteps.registerstep1', ['user' => $user[0]]);
@@ -68,9 +70,4 @@ Route::get('/dashboard', [PersonalController::class, 'showServices'])->name('das
 Route::get('/dashboard/deleteservice/{id}', [PersonalController::class, 'deleteService'])->name('deleteService');
 Route::post('/dashboard/updateservice/{id}', [PersonalController::class, 'updateService'])->name('updateservice');
 
-
 Route::get('/', [SiteController::class, 'site']);
-
-/*
- teste commit
-*/
