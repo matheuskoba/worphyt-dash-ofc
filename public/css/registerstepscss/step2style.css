@@ -23,12 +23,16 @@ body
     background-color: white;
     border-radius: 50px;
 }
-.main-container .contents a
+.main-container form .contents p
 {
     color: white;
-    margin-bottom: 20px;
     text-decoration: none;
     margin-top: 7px;
+}
+.main-container form .contents .form-control
+{
+    margin-left: 160px;
+    margin-bottom: 10px;
 }
 .main-container .contents textarea
 {
