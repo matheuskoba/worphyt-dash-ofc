@@ -13,13 +13,16 @@
     </head>
     <body>
         <div class="main-container">
-            <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
-            <div class="contents">
-                <img src="{{ asset('img/user.png') }}" alt="profile">
-                <a href="">Editar Foto</a>
-                <textarea type="text" name="description" placeholder="Descrição"> </textarea>
-            </div>
-            <button> <i class="fa-solid fa-arrow-right"></i> </button>
+            <form method="POST" action="{{ route('personalprofile') }}">
+                @csrf
+                <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
+                <div class="contents">
+                    <img src="{{ asset('img/user.png') }}" alt="profile">
+                    <a href="">Editar Foto</a>
+                    <textarea type="text" name="description" placeholder="Descrição"></textarea>
+                </div>
+                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+            </form>
         </div>
     </body>
 </html>

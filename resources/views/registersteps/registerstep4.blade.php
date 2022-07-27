@@ -68,7 +68,7 @@
                 var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
                 var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
                 fieldWrapper.data("idx", intId);
-                var fName = $("<div class=\"contents\"><div class=\"inputspecialty box-input\"><span><i class=\"fa-solid fa-dumbbell\"></i></span><input type=\"text\" name=\"specialty\" placeholder=\"Especialidade\"></div></div>");
+                var fName = $("<div class=\"contents\"><div class=\"inputspecialty box-input\"><span><i class=\"fa-solid fa-dumbbell\"></i></span><input type=\"text\" name=\"specialties[]\" placeholder=\"Especialidade\"></div></div>");
                 var removeButton = $("<button id=\"remove\"><i class=\"fa-solid fa-trash\"></i></button>");
                 removeButton.click(function() {
                     $(this).parent().remove();

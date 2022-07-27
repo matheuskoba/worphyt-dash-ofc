@@ -27,6 +27,11 @@
                 </div>
                 <div id="buildyourform">
                 </div>
+                @if($errors->all())
+                    @foreach($errors->all() as $error)
+                        <p style="color: red">{{ $error }}</p>
+                    @endforeach
+                @endif
             <button> <i class="fa-solid fa-arrow-right"></i> </button>
         </form>
     </div>
@@ -37,7 +42,7 @@
             var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
             var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
             fieldWrapper.data("idx", intId);
-            var fName = $("<div class=\"contents\"><div class=\"inputregions box-input\"><span><i class=\"fa-solid fa-location-dot\"></i></span><input type=\"text\" name=\"district\" placeholder=\"Bairro\"></div></div>");
+            var fName = $("<div class=\"contents\"><div class=\"inputregions box-input\"><span><i class=\"fa-solid fa-location-dot\"></i></span><input type=\"text\" name=\"regions[]\" placeholder=\"Bairro\"></div></div>");
             var removeButton = $("<button id=\"remove\"><i class=\"fa-solid fa-trash\"></i></button>");
             removeButton.click(function() {
                 $(this).parent().remove();
