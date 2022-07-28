@@ -108,14 +108,14 @@
                     <button type="button">Adicionar Idioma</button>
                 </div>
                 <div class="card-footer">
-                    @foreach($languages as $language)
-                        @if($language)
+                    @if($languages)
+                        @foreach($languages as $language)
                             <div class="box">
                                 <a href="{{ route('delete.language', $language->id) }}"><i class="fa-solid fa-trash"></i></a>
                                 <p>{{ $language->language }}</p>
                             </div>
-                        @endif
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="card">
@@ -124,14 +124,14 @@
                     <button type="button">Adicionar Especialidade</button>
                 </div>
                 <div class="card-footer">
-                    @foreach($specialties as $specialty)
-                        @if($specialty)
+                    @if($specialties)
+                        @foreach($specialties as $specialty)
                             <div class="box">
                                 <a href=""><i class="fa-solid fa-trash"></i></a>
                                 <p>{{ $specialty->specialty }}</p>
                             </div>
-                        @endif
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="card">
@@ -140,14 +140,14 @@
                     <button type="button">Adicionar Academia</button>
                 </div>
                 <div class="card-footer">
-                    @foreach($gyms as $gym)
-                        @if($gym)
+                    @if($gyms)
+                        @foreach($gyms as $gym)
                             <div class="box">
                                 <a href=""><i class="fa-solid fa-trash"></i></a>
                                 <p>{{ $gym->gym }}</p>
                             </div>
-                        @endif
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="card">
@@ -156,14 +156,14 @@
                     <button type="button">Adicionar Bairro</button>
                 </div>
                 <div class="card-footer">
-                    @foreach($regions as $region)
-                        @if($region)
+                    @if($regions)
+                        @foreach($regions as $region)
                             <div class="box">
                                 <a href=""><i class="fa-solid fa-trash"></i></a>
                                 <p>{{ $region->region }}</p>
                             </div>
-                        @endif
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="card">
@@ -172,16 +172,16 @@
                     <button type="button">Adicionar Pacote</button>
                 </div>
                 <div class="card-footer">
-                    @foreach($packs as $pack)
-                        @if($pack)
+                    @if($packs)
+                        @foreach($packs as $pack)
                             <div class="box">
                                 <a href=""><i class="fa-solid fa-trash"></i></a>
                                 <p>{{ $pack->hours }}h</p>
                                 <p>-</p>
                                 <p>R${{ $pack->pricepromotional }}</p>
                             </div>
-                        @endif
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>
