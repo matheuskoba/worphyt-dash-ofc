@@ -16,7 +16,7 @@ body
 .main-container form .input .fa-toggle-on,
 .main-container form .input .fa-toggle-off
 {
-    font-size: 20px;
+    font-size: 30px;
     padding: 10px 20px 10px 30px;
 }
 .main-container form .specialties p
@@ -35,6 +35,8 @@ body
 }
 .main-container div label
 {
+    display: flex;
+    align-items: center;
     color: white;
     margin-right: 20px;
     margin-bottom: 20px;

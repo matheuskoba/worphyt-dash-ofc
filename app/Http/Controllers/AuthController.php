@@ -21,7 +21,7 @@ class AuthController extends Controller
     public function login(AuthRequest $request)
     {
         $validated = $request->validated();
-        \Log::info($validated);
+
         if ($validated) {
 
             $credentials = [
@@ -72,7 +72,7 @@ class AuthController extends Controller
                 $newPersonal->tipo = 0;
                 $newPersonal->save();
 
-                event(new Registered($newPersonal));
+//                event(new Registered($newPersonal));
 
                 $user = User::find(Auth()->user());
 
@@ -84,6 +84,7 @@ class AuthController extends Controller
                 if(!$token) {
                     return redirect()->back()->withInput()->withErrors(['Falha na autenticacao']);
                 }
+                return redirect()->route('step1');
             }else{
                 return redirect()->back()->withInput()->withErrors(['Este email ja foi cadastrado']);
             }

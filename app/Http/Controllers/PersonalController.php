@@ -76,20 +76,19 @@ class PersonalController extends Controller
     public function personalprofile(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'description' => 'required',
-            'image' => 'required'
+            'description' => 'required'
         ]);
-        \Log::info($request->all());
+
         if (!$validator->fails()) {
             $description = $request->input('description');
-            $avatar = $request->file('image');
+//            $avatar = $request->file('image');
 
             $user = User::find(Auth()->user())->first();
 
-            if ($user === true && $request->has('image')) {
-                $imageName = time().'.'.$avatar->getClientOriginalExtension();
-                $avatar->move(public_path('images'), $imageName);
-                $user->avatar = $imageName;
+            if ($user) {
+//                $imageName = time().'.'.$avatar->getClientOriginalExtension();
+//                $avatar->move(public_path('images'), $imageName);
+//                $user->avatar = $imageName;
                 $user->description = $description;
                 $user->save();
 
@@ -118,15 +117,17 @@ class PersonalController extends Controller
                 $user->majorprice = $majorprice;
                 $user->save();
 
-                $arrays = array_combine($hourclasses, $promotionalprices);
+                if ($hourclasses && $promotionalprices) {
+                    $arrays = array_combine($hourclasses, $promotionalprices);
 
-                foreach ($arrays as $hourclass => $promotionalprice) {
-                    if ($hourclass !== '' && $promotionalprice !== '') {
-                        $newPersonalPacks = new PersonalPromotionalPacks();
-                        $newPersonalPacks->id_personal = $user->id;
-                        $newPersonalPacks->hours = $hourclass;
-                        $newPersonalPacks->pricepromotional = $promotionalprice;
-                        $newPersonalPacks->save();
+                    foreach ($arrays as $hourclass => $promotionalprice) {
+                        if ($hourclass !== '' && $promotionalprice !== '') {
+                            $newPersonalPacks = new PersonalPromotionalPacks();
+                            $newPersonalPacks->id_personal = $user->id;
+                            $newPersonalPacks->hours = $hourclass;
+                            $newPersonalPacks->pricepromotional = $promotionalprice;
+                            $newPersonalPacks->save();
+                        }
                     }
                 }
                 return redirect()->route('step4');
@@ -168,11 +169,25 @@ class PersonalController extends Controller
         ]);
 
         if (!$validator->fails()) {
-            $languages = $request->input('languages');
+            $data = $request->all();
+            $languages = $data['language'];
+            $remote = (!isset($data['remote'])) ? 0 : 1;
+            $presential = (!isset($data['presential'])) ? 0 : 1;
 
             $user = User::find(Auth()->user())->first();
-            foreach ($languages as $language) {
-                if ($language) {
+
+            if ($user) {
+                if ($remote) {
+                    $user->remote_service = $remote;
+                }
+                if($presential) {
+                    $user->face_to_face_service = $presential;
+                }
+                $user->save();
+            }
+
+            if ($languages) {
+                foreach ($languages as $language) {
                     $newLanguage = new PersonalLanguage();
                     $newLanguage->id_personal = $user->id;
                     $newLanguage->language = $language;

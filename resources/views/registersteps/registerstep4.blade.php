@@ -20,7 +20,7 @@
                 @csrf
                 <div class="input box">
                     <label>
-                        <input type="checkbox" class="hidden" name="experimental" checked="checked" />
+                        <input type="checkbox" class="hidden" name="experimental" />
                         Aula Experimental
                         <i class="fa fa-toggle-on"></i>
                     </label>
