@@ -140,8 +140,14 @@
                     <button type="button">Adicionar Academia</button>
                 </div>
                 <div class="card-footer">
-                    <a href=""><i class="fa-solid fa-trash"></i></a>
-                    <p>Bluefit</p>
+                    @foreach($gyms as $gym)
+                        @if($gym)
+                            <div class="box">
+                                <a href=""><i class="fa-solid fa-trash"></i></a>
+                                <p>{{ $gym->gym }}</p>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="card">
@@ -150,8 +156,14 @@
                     <button type="button">Adicionar Bairro</button>
                 </div>
                 <div class="card-footer">
-                    <a href=""><i class="fa-solid fa-trash"></i></a>
-                    <p>Taguatinga Norte</p>
+                    @foreach($regions as $region)
+                        @if($region)
+                            <div class="box">
+                                <a href=""><i class="fa-solid fa-trash"></i></a>
+                                <p>{{ $region->region }}</p>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="card">
@@ -160,8 +172,16 @@
                     <button type="button">Adicionar Pacote</button>
                 </div>
                 <div class="card-footer">
-                    <a href=""><i class="fa-solid fa-trash"></i></a>
-                    <p>14h - R$1000</p>
+                    @foreach($packs as $pack)
+                        @if($pack)
+                            <div class="box">
+                                <a href=""><i class="fa-solid fa-trash"></i></a>
+                                <p>{{ $pack->hours }}h</p>
+                                <p>-</p>
+                                <p>R${{ $pack->pricepromotional }}</p>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>

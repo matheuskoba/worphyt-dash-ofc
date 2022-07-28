@@ -28,14 +28,18 @@ class PersonalController extends Controller
         $user = User::find(Auth()->user());
         $specialties = PersonalSpecialty::select()->where('id_personal', $user[0]->id)->get();
         $languages = PersonalLanguage::select()->where('id_personal', $user[0]->id)->get();
+        $gyms = PersonalGym::select()->where('id_personal', $user[0]->id)->get();
+        $regions = PersonalServiceRegion::select()->where('id_personal', $user[0]->id)->get();
+        $packs = PersonalPromotionalPacks::select()->where('id_personal', $user[0]->id)->get();
+        \Log::info($packs);
 
 //            if ($user[0]->cref === null) {
 //                return redirect()->route('step1');
 //            }
 
         if ($user) {
-            return view('perfil', ['user' => $user[0], 'languages' => $languages, 'specialties' => $specialties]);
-        }
+            return view('perfil', ['user' => $user[0], 'packs' => $packs, 'regions' => $regions, 'gyms' => $gyms, 'languages' => $languages, 'specialties' => $specialties]);
+         }
     }
     public function deleteLanguage($id)
     {
