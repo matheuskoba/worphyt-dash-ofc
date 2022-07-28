@@ -18,99 +18,29 @@ class PersonalController extends Controller
     {
         $this->middleware('auth');
     }
-
-    public function createService(Request $request)
+    public function showAppointments()
     {
-            $validator = Validator::make($request->all(), [
-                'nameservice' => 'required',
-                'priceservice' => 'required',
-                'descriptionservice' => 'required',
-            ]);
-
-            if (!$validator->fails()) {
-                $nameservice = $request->input('nameservice');
-                $priceservice = $request->input('priceservice');
-                $descriptionservice = $request->input('descriptionservice');
-
-                $user = User::find(Auth()->user());
-                $idPersonal = $user[0]->id;
-
-                $newService = new PersonalServices();
-                $newService->name = $nameservice;
-                $newService->price = $priceservice;
-                $newService->description = $descriptionservice;
-                $newService->id_personal = $idPersonal;
-                $newService->save();
-
-                return redirect()->route('dashboard');
-            }
-            return redirect()->back()->withInput()->withErrors(['Algo deu errado']);
-    }
-
-    public function showServices()
-    {
-            $user = User::find(Auth()->user());
-
-            $services = PersonalServices::select()->where('id_personal', $user[0]->id)->get();
-
-            if ($user[0]->cref === null) {
-                return redirect()->route('step1');
-            }
-
-            if ($services->isNotEmpty()) {
-                return view('dashboard', ['services' => $services], ['user' => $user[0]]);
-            } else {
-                return view('dashboard', ['services' => null],['user' => $user[0]]);
-            }
-    }
-    public function updateService(Request $request, $id)
-    {
-            $servicename = $request->input('servicename');
-            $serviceprice = $request->input('serviceprice');
-            $servicedescription = $request->input('servicedescription');
-
-            $service = PersonalServices::find($request->id);
-
-            if ($servicename)  {
-                $service->name = $servicename;
-            }
-
-            if ($serviceprice) {
-                $service->price = $serviceprice;
-            }
-
-            if ($servicedescription) {
-                $service->description = $servicedescription;
-            }
-
-            $service->save();
-
-            return redirect()->route('dashboard');
-    }
-    public function deleteService($id)
-    {
-        $service = PersonalServices::where('id', $id)->delete();
-        return redirect()->route('dashboard');
+        $user = User::find(\Auth()->user());
+        return view('inicio', ['user' => $user[0]]);
     }
     public function showPerfil()
     {
-            $user = User::find(Auth()->user());
+        $user = User::find(Auth()->user());
+        $specialties = PersonalSpecialty::select()->where('id_personal', $user[0]->id)->get();
+        $languages = PersonalLanguage::select()->where('id_personal', $user[0]->id)->get();
 
 //            if ($user[0]->cref === null) {
 //                return redirect()->route('step1');
 //            }
 
-            if ($user) {
-                return view('perfil', ['user' => $user[0]]);
-            }
-    }
-    public function showSchedule()
-    {
-        $user = User::find(Auth()->user());
-
         if ($user) {
-            return view('agenda', ['user' => $user[0]]);
+            return view('perfil', ['user' => $user[0], 'languages' => $languages, 'specialties' => $specialties]);
         }
+    }
+    public function deleteLanguage($id)
+    {
+        $language = PersonalLanguage::where('id', $id)->delete();
+        return redirect()->route('perfil');
     }
     public function personalinfo(Request $request)
     {

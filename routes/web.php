@@ -62,12 +62,9 @@ Route::get('/dashboard/authentication/registerstep7', function(){
 Route::post('/dashboard/authentication/registerstep7/update7', [PersonalController::class, 'personalregions'])->name('personalregions');
 
 Route::get('/dashboard/authentication', [AuthController::class, 'authentication'])->name('auth');
-Route::get('/dashboard/agenda', [PersonalController::class, 'showSchedule']);
-Route::get('/dashboard/perfil', [PersonalController::class, 'showPerfil']);
+Route::get('/dashboard/perfil', [PersonalController::class, 'showPerfil'])->name('perfil');
+Route::get('/dashboard/perfil/{id}', [PersonalController::class, 'deleteLanguage'])->name('delete.language');
 
-Route::post('/dashboard/createservice', [PersonalController::class, 'createService'])->name('createService');
-Route::get('/dashboard', [PersonalController::class, 'showServices'])->name('dashboard');
-Route::get('/dashboard/deleteservice/{id}', [PersonalController::class, 'deleteService'])->name('deleteService');
-Route::post('/dashboard/updateservice/{id}', [PersonalController::class, 'updateService'])->name('updateservice');
+Route::get('/dashboard', [PersonalController::class, 'showAppointments'])->name('dashboard');
 
 Route::get('/', [SiteController::class, 'site']);

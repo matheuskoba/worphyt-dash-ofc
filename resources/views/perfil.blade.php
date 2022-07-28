@@ -32,18 +32,18 @@
                             <img src="{{ asset('img/user.png') }}" alt="profile">
                             <div>
                                 <h3>{{ $user->name }}</h3>
-                                <p><i class="fa-brands fa-instagram icon"></i>@matheuskoba</p>
-                                <p><i class="fa-brands fa-whatsapp icon"></i>(61) 9 9914-8523</p>
-                                <p><i class="fa-solid fa-id-card-clip icon"></i>000000G-/DF</p>
+                                <p><i class="fa-brands fa-instagram icon"></i>{{ $user->instagram }}</p>
+                                <p><i class="fa-brands fa-whatsapp icon"></i>{{ $user->whatsapp }}</p>
+                                <p><i class="fa-solid fa-id-card-clip icon"></i>{{ $user->cref }}</p>
                             </div>
                             <div>
                                 <div class="prices">
-                                    <p class="minorprice">R$80~</p>
-                                    <p class="majorprice">R$100</p>
+                                    <p class="minorprice">R${{ $user->minorprice }}~</p>
+                                    <p class="majorprice">R${{ $user->majorprice }}</p>
                                 </div>
                                 <div class="aula-experimental">
                                     <p>Aula experimental:</p>
-                                    <p class="p-style">1h</p>
+                                    <p class="p-style">{{ $user->trialtime }}h</p>
                                 </div>
                                 <div class="tipo-atendimento">
                                     <p>Atendimento:</p>
@@ -108,8 +108,14 @@
                     <button type="button">Adicionar Idioma</button>
                 </div>
                 <div class="card-footer">
-                    <a href=""><i class="fa-solid fa-trash"></i></a>
-                    <p>Ingles</p>
+                    @foreach($languages as $language)
+                        @if($language)
+                            <div class="box">
+                                <a href="{{ route('delete.language', $language->id) }}"><i class="fa-solid fa-trash"></i></a>
+                                <p>{{ $language->language }}</p>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="card">
@@ -118,8 +124,14 @@
                     <button type="button">Adicionar Especialidade</button>
                 </div>
                 <div class="card-footer">
-                    <a href=""><i class="fa-solid fa-trash"></i></a>
-                    <p>Emagrecimento</p>
+                    @foreach($specialties as $specialty)
+                        @if($specialty)
+                            <div class="box">
+                                <a href=""><i class="fa-solid fa-trash"></i></a>
+                                <p>{{ $specialty->specialty }}</p>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="card">

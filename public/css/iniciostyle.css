@@ -1,0 +1,27 @@
+body
+{
+    background: #000000;
+}
+
+.container
+{
+    padding: 78px 100px 100px 100px;
+}
+.container .title h2
+{
+    color: white;
+    font-weight: normal;
+}
+.container .title p
+{
+    color: white;
+    margin-top: -16px;
+}
+
+@media screen and (max-width: 960px)
+{
+    .container
+    {
+        padding: 80px 10px 10px 10px;
+    }
+}

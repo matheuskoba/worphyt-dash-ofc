@@ -256,8 +256,6 @@ body
 }
 .container .card .card-footer
 {
-    display: flex;
-    align-items: center;
     margin-top: 20px;
 }
 .container .card .card-footer p
@@ -268,6 +266,11 @@ body
 .container .card .card-footer i
 {
     color: white;
+}
+.container .card .card-footer .box
+{
+    display: flex;
+    align-items: center;
 }
 .modal
 {
