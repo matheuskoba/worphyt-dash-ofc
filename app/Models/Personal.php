@@ -8,6 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Personal extends Authenticatable
 {
+    use HasFactory;
+
+    protected $guard = 'personal';
+
+    protected $table = 'personals';
+
     protected $fillable = [
         'name',
         'email',
@@ -19,5 +25,7 @@ class Personal extends Authenticatable
         'remember_token',
     ];
 
-    protected $table = 'personals';
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

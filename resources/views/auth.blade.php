@@ -25,7 +25,7 @@
                         @csrf
                         <img class="logo" src="{{ asset('img/logob.png') }}" alt="logo">
                         <h3>Entrar</h3>
-                        <input id="email" name="email" type="email" value="matheusk2013@outlook.com" placeholder="Email">
+                        <input id="email" name="email" type="email" placeholder="Email">
                         <input id="password" name="password" type="password" placeholder="Senha">
                         <input type="submit" value="Entrar">
                         <div class="remember">

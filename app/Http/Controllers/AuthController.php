@@ -24,74 +24,16 @@ class AuthController extends Controller
 
         if ($validated) {
 
-            $credentials = [
-                'email' => $request->email,
-                'password' => $request->password,
-            ];
+            if (Auth::attempt($validated)) { //<- this if fail with personal model, but it work with default user model
+                $request->session()->regenerate();
 
-            if (Auth::attempt($credentials)) {
-                $user = User::find(Auth()->user());
-
-                if ($user[0]->cref != null) {
-                    return redirect()->route('dashboard');
-                } else {
-                    return redirect()->route('dashboard');
-                }
+                return redirect()->intended('dashboard');
             }
-            return redirect()->back()->withInput()->withErrors(['Email e/ou senha estão incorretos']);
+
+            return back()->withErrors([
+                'email' => 'Email e/ou senha incorretos',
+            ])->onlyInput('email');
         }
-        return redirect()->back()->withInput()->withErrors(['Preencha todos os campos']);
-    }
-    public function register(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'confirmPassword' => 'required'
-        ]);
-
-        if(!$validator->fails()){
-            $name = $request->input('name');
-            $email = $request->input('email');
-            $password = $request->input('password');
-            $confirmPassword = $request->input('confirmPassword');
-
-            if ($password != $confirmPassword) {
-                return redirect()->back()->withInput()->withErrors(['As senhas precisam ser iguais']);
-            }
-
-            $emailExists = User::where('email', $email)->count();
-            if($emailExists === 0){
-                $hash = password_hash($password, PASSWORD_DEFAULT);
-
-                $newPersonal = new User();
-                $newPersonal->name = $name;
-                $newPersonal->email = $email;
-                $newPersonal->password = $hash;
-                $newPersonal->tipo = 0;
-                $newPersonal->save();
-
-//                event(new Registered($newPersonal));
-
-                $user = User::find(Auth()->user());
-
-                $token = Auth::attempt([
-                    'email' => $email,
-                    'password' => $password
-                ]);
-
-                if(!$token) {
-                    return redirect()->back()->withInput()->withErrors(['Falha na autenticacao']);
-                }
-                return redirect()->route('step1');
-            }else{
-                return redirect()->back()->withInput()->withErrors(['Este email ja foi cadastrado']);
-            }
-        }else{
-            return redirect()->back()->withInput()->withErrors(['Dados incorretos']);
-        }
-        return redirect()->route('');
     }
     public function logout()
     {

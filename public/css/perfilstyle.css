@@ -267,10 +267,61 @@ body
 {
     color: white;
 }
+.container .card .card-footer form .form
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.container .card .card-footer form .form div.inputs
+{
+    display: flex;
+}
+.container .card .card-footer form .form div.input
+{
+    border: solid 1px #303030;
+    margin-left: 20px;
+    background-color: #101010;
+    width: 30%;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+.container .card .card-footer form .form div.input input
+{
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    color: white;
+}
+.container .card .card-footer form .form div input:focus-visible
+{
+    outline: none;
+}
+.container .card .card-footer form .form div.buttons button
+{
+    background: none;
+    border: solid 1px #303030;
+    color: white;
+    width: 5rem;
+    height: 2rem;
+    cursor: pointer;
+}
+.container .card .card-footer form .form div.buttons button:hover
+{
+    background-color: #303030;
+}
 .container .card .card-footer .box
 {
     display: flex;
     align-items: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 .modal
 {

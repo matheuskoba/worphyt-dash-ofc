@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="aula-experimental">
                                     <p>Aula experimental:</p>
-                                    <p class="p-style">{{ $user->trialtime }}h</p>
+                                    <p class="p-style">{{ $user->trialtime ?? 0 }}h</p>
                                 </div>
                                 <div class="tipo-atendimento">
                                     <p>Atendimento:</p>
@@ -105,83 +105,160 @@
             <div class="card">
                 <div class="card-header">
                     <h3>Idiomas</h3>
-                    <button type="button">Adicionar Idioma</button>
+                    <button onclick="addinputlang()" type="button">Adicionar Idioma</button>
                 </div>
                 <div class="card-footer">
-                    @if($languages)
-                        @foreach($languages as $language)
+                    <div class="card-itens" id="itenslang">
+                        @forelse($languages as $language)
                             <div class="box">
                                 <a href="{{ route('delete.language', $language->id) }}"><i class="fa-solid fa-trash"></i></a>
                                 <p>{{ $language->language }}</p>
                             </div>
-                        @endforeach
-                    @endif
+                        @empty
+                            <div>
+                                <p>Nenhum idioma cadastrado, insira pelo menos seu idioma nativo.</p>
+                            </div>
+                        @endforelse
+                    </div>
+                    <form style="display: none" id="formAddLanguage" method="POST" action="{{ route('add.language') }}">
+                        @csrf
+                        <div class="form">
+                            <div class="input">
+                                <input type="text" placeholder="Idioma" name="language">
+                            </div>
+                            <div class="buttons">
+                                <button onclick="removeinputlang()" type="button">Cancelar</button>
+                                <button type="submit">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">
                     <h3>Especialidades</h3>
-                    <button type="button">Adicionar Especialidade</button>
+                    <button onclick="addinputspec()" type="button">Adicionar Especialidade</button>
                 </div>
                 <div class="card-footer">
-                    @if($specialties)
-                        @foreach($specialties as $specialty)
-                            <div class="box">
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                                <p>{{ $specialty->specialty }}</p>
+                    @forelse($specialties as $specialty)
+                        <div class="box">
+                            <a href="{{ route('delete.specialty', $specialty->id) }}"><i class="fa-solid fa-trash"></i></a>
+                            <p>{{ $specialty->specialty }}</p>
+                        </div>
+                    @empty
+                        <div>
+                            <p>Nenhuma especialidade cadastrada, insira pelo menos uma.</p>
+                        </div>
+                    @endforelse
+                    <form style="display: none" id="formAddSpecialty" method="POST" action="{{ route('add.specialty') }}">
+                        @csrf
+                        <div class="form">
+                            <div class="input">
+                                <input type="text" placeholder="Especialidade" name="specialty">
                             </div>
-                        @endforeach
-                    @endif
+                            <div class="buttons">
+                                <button onclick="removeinputspec()" type="button">Cancelar</button>
+                                <button>Salvar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">
                     <h3>Academias</h3>
-                    <button type="button">Adicionar Academia</button>
+                    <button onclick="addinputgym()" type="button">Adicionar Academia</button>
                 </div>
                 <div class="card-footer">
-                    @if($gyms)
-                        @foreach($gyms as $gym)
-                            <div class="box">
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                                <p>{{ $gym->gym }}</p>
+                    @forelse($gyms as $gym)
+                        <div class="box">
+                            <a href="{{ route('delete.gym', $specialty->id) }}"><i class="fa-solid fa-trash"></i></a>
+                            <p>{{ $gym->gym }}</p>
+                        </div>
+                    @empty
+                        <div>
+                            <p>Nenhuma academia cadastrada.</p>
+                        </div>
+                    @endforelse
+                    <form style="display: none" id="formAddGym" method="POST" action="{{ route('add.gym') }}">
+                        @csrf
+                        <div class="form">
+                            <div class="input">
+                                <input type="text" placeholder="Academia" name="gym">
                             </div>
-                        @endforeach
-                    @endif
+                            <div class="buttons">
+                                <button onclick="removeinputgym()" type="button">Cancelar</button>
+                                <button>Salvar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">
                     <h3>Bairros</h3>
-                    <button type="button">Adicionar Bairro</button>
+                    <button onclick="addinputreg()" type="button">Adicionar Bairro</button>
                 </div>
                 <div class="card-footer">
-                    @if($regions)
-                        @foreach($regions as $region)
-                            <div class="box">
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                                <p>{{ $region->region }}</p>
+                    @forelse($regions as $region)
+                        <div class="box">
+                            <a href="{{ route('delete.region', $region->id) }}"><i class="fa-solid fa-trash"></i></a>
+                            <p>{{ $region->region }}</p>
+                        </div>
+                    @empty
+                        <div>
+                            <p>Nenhuma regiao cadastrada.</p>
+                        </div>
+                    @endforelse
+                    <form style="display: none" id="formAddRegion" method="POST" action="{{ route('add.region') }}">
+                        @csrf
+                        <div class="form">
+                            <div class="input">
+                                <input type="text" placeholder="Região" name="region">
                             </div>
-                        @endforeach
-                    @endif
+                            <div class="buttons">
+                                <button onclick="removeinputreg()" type="button">Cancelar</button>
+                                <button>Salvar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">
                     <h3>Pacotes Promocionais</h3>
-                    <button type="button">Adicionar Pacote</button>
+                    <button onclick="addinputpack()" type="button">Adicionar Pacote</button>
                 </div>
                 <div class="card-footer">
-                    @if($packs)
-                        @foreach($packs as $pack)
-                            <div class="box">
-                                <a href=""><i class="fa-solid fa-trash"></i></a>
-                                <p>{{ $pack->hours }}h</p>
-                                <p>-</p>
-                                <p>R${{ $pack->pricepromotional }}</p>
+                    @forelse($packs as $pack)
+                        <div class="box">
+                            <a href="{{ route('delete.pack', $pack->id) }}"><i class="fa-solid fa-trash"></i></a>
+                            <p>{{ $pack->hours }}h</p>
+                            <p>-</p>
+                            <p>R${{ $pack->pricepromotional }}</p>
+                        </div>
+                    @empty
+                        <div>
+                            <p>Nenhuma promoção cadastrada</p>
+                        </div>
+                    @endforelse
+                    <form style="display: none" id="formAddPack" method="POST" action="{{ route('add.pack') }}">
+                        @csrf
+                        <div class="form">
+                            <div class="inputs">
+                                <div class="input">
+                                    <input type="number" placeholder="Horas" name="hour">
+                                </div>
+                                <div class="input">
+                                    <input type="number" step="0.01" placeholder="Preço" name="price">
+                                </div>
                             </div>
-                        @endforeach
-                    @endif
+                            <div class="buttons">
+                                <button onclick="removeinputpack()" type="button">Cancelar</button>
+                                <button>Salvar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> SAIR</a>
@@ -216,5 +293,70 @@
                 </div>
             </div>
         </div>
+        <script>
+            function addinputlang(){
+                document.getElementById('formAddLanguage').style.display = "block";
+                document.getElementById('itenslang').style.display = "none";
+            }
+            function removeinputlang(){
+                document.getElementById('formAddLanguage').style.display = "none";
+                document.getElementById('itenslang').style.display = "block";
+            }
+            function addinputspec(){
+                document.getElementById('formAddSpecialty').style.display = "block";
+            }
+            function removeinputspec(){
+                document.getElementById('formAddSpecialty').style.display = "none";
+            }
+            function addinputgym(){
+                document.getElementById('formAddGym').style.display = "block";
+            }
+            function removeinputgym(){
+                document.getElementById('formAddGym').style.display = "none";
+            }
+            function addinputreg(){
+                document.getElementById('formAddRegion').style.display = "block";
+            }
+            function removeinputreg(){
+                document.getElementById('formAddRegion').style.display = "none";
+            }
+            function addinputpack(){
+                document.getElementById('formAddPack').style.display = "block";
+            }
+            function removeinputpack(){
+                document.getElementById('formAddPack').style.display = "none";
+            }
+        </script>
+{{--        <script>--}}
+{{--            $(document).ready(function(){--}}
+
+{{--                const form = '#formAddLanguage';--}}
+
+{{--                $(form).on('submit', function(event){--}}
+{{--                    event.preventDefault();--}}
+
+{{--                    const url = $(this).attr('data-action');--}}
+
+{{--                    $.ajax({--}}
+{{--                        url: url,--}}
+{{--                        method: 'POST',--}}
+{{--                        data: new FormData(this),--}}
+{{--                        dataType: 'JSON',--}}
+{{--                        contentType: false,--}}
+{{--                        cache: false,--}}
+{{--                        processData: false,--}}
+{{--                        success:function(response)--}}
+{{--                        {--}}
+{{--                            document.getElementById('formAddLanguage').style.display = "none";--}}
+{{--                            document.getElementById('itenslang').style.display = "block";--}}
+{{--                            $(form).trigger("reset");--}}
+{{--                            alert(response.success)--}}
+{{--                        },--}}
+{{--                        error: function(response) {--}}
+{{--                        }--}}
+{{--                    });--}}
+{{--                });--}}
+{{--            });--}}
+{{--        </script>--}}
     </body>
 </html>

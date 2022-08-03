@@ -23,6 +23,7 @@ class PersonalController extends Controller
         $user = User::find(\Auth()->user());
         return view('inicio', ['user' => $user[0]]);
     }
+
     public function showPerfil()
     {
         $user = User::find(Auth()->user());
@@ -31,7 +32,6 @@ class PersonalController extends Controller
         $gyms = PersonalGym::select()->where('id_personal', $user[0]->id)->get();
         $regions = PersonalServiceRegion::select()->where('id_personal', $user[0]->id)->get();
         $packs = PersonalPromotionalPacks::select()->where('id_personal', $user[0]->id)->get();
-        \Log::info($packs);
 
 //            if ($user[0]->cref === null) {
 //                return redirect()->route('step1');
@@ -43,205 +43,120 @@ class PersonalController extends Controller
     }
     public function deleteLanguage($id)
     {
-        $language = PersonalLanguage::where('id', $id)->delete();
+        PersonalLanguage::where('id', $id)->delete();
         return redirect()->route('perfil');
     }
-    public function personalinfo(Request $request)
+    public function deleteSpecialty($id)
     {
-        $validator = Validator::make($request->all(), [
-            'whatsapp' => 'required',
-            'instagram' => 'required',
-            'cref' => 'required',
-        ]);
-
-        if (!$validator->fails()) {
-            $whatsapp = $request->input('whatsapp');
-            $instagram = $request->input('instagram');
-            $cref = $request->input('cref');
-
-            $user = User::find(Auth()->user())->first();
-
-            if ($user) {
-                $user->whatsapp = $whatsapp;
-                $user->instagram = $instagram;
-                $user->cref = $cref;
-                $user->save();
-
-                return redirect()->route('step2');
-            }
-            return redirect()->back()->withInput()->withErrors(['Ocorreu um erro']);
-        }
-        return redirect()->back()->withInput()->withErrors(['Preencha todos os campos']);
+        PersonalSpecialty::where('id', $id)->delete();
+        return redirect()->route('perfil');
     }
-    public function personalprofile(Request $request)
+    public function deleteGym($id)
     {
-        $validator = Validator::make($request->all(), [
-            'description' => 'required'
-        ]);
-
-        if (!$validator->fails()) {
-            $description = $request->input('description');
-//            $avatar = $request->file('image');
-
-            $user = User::find(Auth()->user())->first();
-
-            if ($user) {
-//                $imageName = time().'.'.$avatar->getClientOriginalExtension();
-//                $avatar->move(public_path('images'), $imageName);
-//                $user->avatar = $imageName;
-                $user->description = $description;
-                $user->save();
-
-                return redirect()->route('step3');
-            }
-            return redirect()->back()->withInput()->withErrors(['teste']);
-        }
-        return redirect()->back()->withInput()->withErrors(['A imagem precisa ser menor ou igual a 1024px']);
+        PersonalGym::where('id', $id)->delete();
+        return redirect()->route('perfil');
     }
-    public function personalprice(Request $request)
+    public function deleteRegion($id)
     {
-        $validator = Validator::make($request->all(), [
-            'minorprice' => 'required',
-            'majorprice' => 'required',
-        ]);
-
-        if (!$validator->fails()) {
-            $minorprice = $request->input('minorprice');
-            $majorprice = $request->input('majorprice');
-            $hourclasses = $request->input('hourclass');
-            $promotionalprices = $request->input('price');
-
-            $user = User::find(Auth()->user())->first();
-            if ($user) {
-                $user->minorprice = $minorprice;
-                $user->majorprice = $majorprice;
-                $user->save();
-
-                if ($hourclasses && $promotionalprices) {
-                    $arrays = array_combine($hourclasses, $promotionalprices);
-
-                    foreach ($arrays as $hourclass => $promotionalprice) {
-                        if ($hourclass !== '' && $promotionalprice !== '') {
-                            $newPersonalPacks = new PersonalPromotionalPacks();
-                            $newPersonalPacks->id_personal = $user->id;
-                            $newPersonalPacks->hours = $hourclass;
-                            $newPersonalPacks->pricepromotional = $promotionalprice;
-                            $newPersonalPacks->save();
-                        }
-                    }
-                }
-                return redirect()->route('step4');
-            }
-        }
-        return redirect()->back()->withInput()->withErrors(['Preencha todos os campos']);
+        PersonalServiceRegion::where('id', $id)->delete();
+        return redirect()->route('perfil');
     }
-    public function personalspecialties(Request $request)
+    public function deletePack($id)
     {
-        $validator = Validator::make($request->all(), [
-            'specialties' => 'required'
-        ]);
-
-        if (!$validator->fails()) {
-            $specialties = $request->input('specialties');
-            $trialtime = $request->input('trialtime');
-
-            $user = User::find(Auth()->user())->first();
-                if ($user) {
-                    $user->trialtime = $trialtime;
-                    $user->save();
-                    foreach ($specialties as $specialty) {
-                    if ($specialty) {
-                        $newSpecialty = new PersonalSpecialty();
-                        $newSpecialty->id_personal = $user->id;
-                        $newSpecialty->specialty = $specialty;
-                        $newSpecialty->save();
-                    }
-                }
-            }
-            return redirect()->route('step5');
-        }
-        return redirect()->back()->withInput()->withErrors(['Preencha no mínimo uma especialidade']);
+        PersonalPromotionalPacks::where('id', $id)->delete();
+        return redirect()->route('perfil');
     }
-    public function personallanguages(Request $request)
+    public function addLanguage(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'languages' => 'required'
-        ]);
+       $data = $request->all();
 
-        if (!$validator->fails()) {
-            $data = $request->all();
-            $languages = $data['language'];
-            $remote = (!isset($data['remote'])) ? 0 : 1;
-            $presential = (!isset($data['presential'])) ? 0 : 1;
+       $validator = Validator::make($data, [
+           'language' => 'required'
+       ]);
 
-            $user = User::find(Auth()->user())->first();
+       if (!$validator->fails()) {
+           $newlanguage = new PersonalLanguage();
+           $newlanguage->id_personal = \Auth()->user()->id;
+           $newlanguage->language = $data['language'];
+           $newlanguage->save();
 
-            if ($user) {
-                if ($remote) {
-                    $user->remote_service = $remote;
-                }
-                if($presential) {
-                    $user->face_to_face_service = $presential;
-                }
-                $user->save();
-            }
-
-            if ($languages) {
-                foreach ($languages as $language) {
-                    $newLanguage = new PersonalLanguage();
-                    $newLanguage->id_personal = $user->id;
-                    $newLanguage->language = $language;
-                    $newLanguage->save();
-                }
-            }
-            return redirect()->route('step6');
-        }
-        return redirect()->back()->withInput()->withErrors(['Preencha no mínimo seu idioma nativo']);
+           return redirect()->route('perfil');
+       }
+       return redirect()->back()->withInput()->withErrors(['Preencha o campo']);
     }
-    public function personalgyms(Request $request)
+    public function addSpecialty(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'gyms' => 'required'
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'specialty' => 'required'
         ]);
 
         if (!$validator->fails()) {
-            $gyms = $request->input('gyms');
+            $newspecialty = new PersonalSpecialty();
+            $newspecialty->id_personal = \Auth()->user()->id;
+            $newspecialty->specialty = $data['specialty'];
+            $newspecialty->save();
 
-            $user = User::find(Auth()->user())->first();
-            foreach ($gyms as $gym){
-                if ($gym) {
-                    $newGym = new PersonalGym();
-                    $newGym->id_personal = $user->id;
-                    $newGym->gym = $gym;
-                    $newGym->save();
-                }
-            }
-            return redirect()->route('step7');
+            return redirect()->route('perfil');
         }
-        return redirect()->back()->withInput()->withErrors(['Preencha no mínimo uma academia']);
+        return redirect()->back()->withInput()->withErrors(['Preencha o campo']);
     }
-    public function personalregions(Request $request)
+    public function addGym(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'regions' => 'required'
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'gym' => 'required'
         ]);
 
         if (!$validator->fails()) {
-            $regions = $request->input('regions');
+            $newgym = new PersonalGym();
+            $newgym->id_personal = \Auth()->user()->id;
+            $newgym->gym = $data['gym'];
+            $newgym->save();
 
-            $user = User::find(Auth()->user())->first();
-            foreach ($regions as $region) {
-                if ($region) {
-                    $newRegion = new PersonalServiceRegion();
-                    $newRegion->id_personal = $user->id;
-                    $newRegion->region = $region;
-                    $newRegion->save();
-                }
-            }
-            return redirect()->route('dashboard');
+            return redirect()->route('perfil');
         }
-        return redirect()->back()->withInput()->withErrors(['Preencha no mínimo um local']);
+        return redirect()->back()->withInput()->withErrors(['Preencha o campo']);
+    }
+    public function addRegion(Request $request)
+    {
+        $data = $request->all();
 
+        $validator = Validator::make($data, [
+            'region' => 'required'
+        ]);
+
+        if (!$validator->fails()) {
+            $newregion = new PersonalServiceRegion();
+            $newregion->id_personal = \Auth()->user()->id;
+            $newregion->region = $data['region'];
+            $newregion->save();
+
+            return redirect()->route('perfil');
+        }
+        return redirect()->back()->withInput()->withErrors(['Preencha o campo']);
+    }
+    public function addPack(Request $request)
+    {
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'hour' => 'required',
+            'price' => 'required'
+        ]);
+
+        if (!$validator->fails()) {
+            $newpack = new PersonalPromotionalPacks();
+            $newpack->id_personal = \Auth()->user()->id;
+            $newpack->hours = $data['hour'];
+            $newpack->pricepromotional = $data['price'];
+            $newpack->save();
+
+            return redirect()->route('perfil');
+        }
+        return redirect()->back()->withInput()->withErrors(['Preencha o campo']);
     }
 }
 

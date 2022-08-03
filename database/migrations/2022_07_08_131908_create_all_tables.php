@@ -13,33 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('avatar')->default('default.png');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->integer('tipo');
-            $table->float('stars')->default(5);
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
-            $table->string('cref')->nullable();
-            $table->string('whatsapp')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('description')->nullable();
-            $table->string('minorprice')->nullable();
-            $table->string('majorprice')->nullable();
-            $table->string('trialtime')->nullable();
-            $table->boolean('face_to_face_service')->default(false);
-            $table->boolean('remote_service')->default(false);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->timestamps();
-        });
-        Schema::create('userfavorites', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_user');
-            $table->integer('id_personal');
-        });
+
+
         Schema::create('userappointments', function (Blueprint $table) {
             $table->id();
             $table->integer('id_user');
@@ -50,17 +25,17 @@ return new class extends Migration
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
         });
-        Schema::create('personals', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('password');
-            $table->string('avatar')->default('default.png');
-            $table->float('stars')->default(5);
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
-            $table->timestamps();
-        });
+//        Schema::create('personals', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('name');
+//            $table->string('email');
+//            $table->string('password');
+//            $table->string('avatar')->default('default.png');
+//            $table->float('stars')->default(5);
+//            $table->string('latitude')->nullable();
+//            $table->string('longitude')->nullable();
+//            $table->timestamps();
+//        });
         Schema::create('personalserviceregion', function (Blueprint $table){
             $table->id();
             $table->integer('id_personal');
@@ -84,8 +59,8 @@ return new class extends Migration
         Schema::create('personalpromotionalpacks', function (Blueprint $table){
             $table->id();
             $table->integer('id_personal');
-            $table->string('hours');
-            $table->string('pricepromotional');
+            $table->integer('hours');
+            $table->float('pricepromotional');
         });
         Schema::create('personalphotos', function (Blueprint $table) {
             $table->id();
@@ -97,13 +72,13 @@ return new class extends Migration
             $table->integer('id_personal');
             $table->string('rate');
         });
-        Schema::create('personalservices', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_personal');
-            $table->string('name');
-            $table->float('price');
-            $table->string('description');
-        });
+//        Schema::create('personalservices', function (Blueprint $table) {
+//            $table->id();
+//            $table->integer('id_personal');
+//            $table->string('name');
+//            $table->float('price');
+//            $table->string('description');
+//        });
         Schema::create('personaltestimonials', function (Blueprint $table) {
             $table->id();
             $table->integer('id_personal');
