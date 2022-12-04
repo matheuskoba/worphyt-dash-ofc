@@ -8,6 +8,7 @@ use App\Models\PersonalPromotionalPacks;
 use App\Models\PersonalSpecialty;
 use App\Models\PersonalLanguage;
 use App\Models\PersonalGym;
+use App\Models\Personal;
 use App\Models\PersonalServiceRegion;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -20,25 +21,28 @@ class PersonalController extends Controller
     }
     public function showAppointments()
     {
-        $user = User::find(\Auth()->user());
-        return view('inicio', ['user' => $user[0]]);
+        $user = auth()->user();
+        $professionals = User::where('tipo', 0)->get();
+
+        return view('inicio', compact('user', 'professionals'));
     }
 
     public function showPerfil()
     {
-        $user = User::find(Auth()->user());
-        $specialties = PersonalSpecialty::select()->where('id_personal', $user[0]->id)->get();
-        $languages = PersonalLanguage::select()->where('id_personal', $user[0]->id)->get();
-        $gyms = PersonalGym::select()->where('id_personal', $user[0]->id)->get();
-        $regions = PersonalServiceRegion::select()->where('id_personal', $user[0]->id)->get();
-        $packs = PersonalPromotionalPacks::select()->where('id_personal', $user[0]->id)->get();
+        $user = Auth()->user();
 
-//            if ($user[0]->cref === null) {
+        $specialties = PersonalSpecialty::select()->where('id_personal', $user->id)->get();
+        $languages = PersonalLanguage::select()->where('id_personal', $user->id)->get();
+        $gyms = PersonalGym::select()->where('id_personal', $user->id)->get();
+        $regions = PersonalServiceRegion::select()->where('id_personal', $user->id)->get();
+        $packs = PersonalPromotionalPacks::select()->where('id_personal', $user->id)->get();
+
+//            if ($user->cref === null) {
 //                return redirect()->route('step1');
 //            }
 
         if ($user) {
-            return view('perfil', ['user' => $user[0], 'packs' => $packs, 'regions' => $regions, 'gyms' => $gyms, 'languages' => $languages, 'specialties' => $specialties]);
+            return view('perfil', ['user' => $user, 'packs' => $packs, 'regions' => $regions, 'gyms' => $gyms, 'languages' => $languages, 'specialties' => $specialties]);
          }
     }
     public function deleteLanguage($id)
@@ -157,6 +161,32 @@ class PersonalController extends Controller
             return redirect()->route('perfil');
         }
         return redirect()->back()->withInput()->withErrors(['Preencha o campo']);
+    }
+    public function list()
+    {
+        $professionals = User::where('tipo', 0)->get();
+
+        $user = auth()->user();
+
+        return view('profesional.index', compact('user', 'professionals'));
+    }
+    public function filter(Request $request)
+    {
+        $data = $request->all();
+        $user = auth()->user();
+
+        if($data['name'] && $user)
+        {
+            $professionals = User::where('tipo', 0)->where('name','LIKE','%'.$data['name'].'%')->get();
+            if($professionals)
+            {
+                return view('profesional.index', compact('user', 'professionals'));
+            }
+        }
+        else
+        {
+            return redirect()->back();
+        }
     }
 }
 

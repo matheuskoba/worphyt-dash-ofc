@@ -1,0 +1,76 @@
+body
+{
+    background: #000000;
+}
+.container
+{
+    padding: 78px 100px 100px 100px;
+}
+.container .title h2
+{
+    color: white;
+    font-weight: normal;
+}
+.container .title p
+{
+    color: #A6A6A6;
+}
+.container .card
+{
+    background-color: #1B1B1B;
+    padding: 2rem;
+    margin-bottom: 30px;
+}
+.container .card table
+{
+    color: white;
+    border-collapse: collapse;
+    width: 100%;
+}
+.container .card table th, td
+{
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    padding: 20px;
+}
+.container .card .filter
+{
+    color: white;
+    display: flex;
+    align-items: center;
+    margin: 15px;
+}
+.container .card .filter label
+{
+    display: block;
+}
+.container .card .filter .filterName,
+.container .card .filter .filterSpecialty
+{
+    margin-right: 30px;
+}
+.container .card .filter input
+{
+    border-radius: 5px;
+    border: none;
+    padding: 8px;
+    margin-top: 5px;
+}
+.container .card .filter input:focus-visible
+{
+    border: none;
+    box-shadow: purple;
+    outline: none;
+}
+.btn
+{
+    border: none;
+    border-radius: 5px;
+    background-color: #004aad;
+    height: 30px;
+    width: 40px;
+    color: white;
+    position: relative;
+    top: 11px;
+    cursor: pointer;
+}

@@ -79,7 +79,7 @@ class RegisterController extends Controller
 
             if ($user) {
                 $user->whatsapp = $data['whatsapp'];
-                $user->instagram = $data['instragram'];
+                $user->instagram = $data['instagram'];
                 $user->cref = $data['cref'];
                 $user->save();
 
@@ -118,14 +118,13 @@ class RegisterController extends Controller
 
         if ($validated) {
             $data = $request->all();
-
             $user = User::find(Auth()->user())->first();
             if ($user) {
                 $user->minorprice = $data['minorprice'];
                 $user->majorprice = $data['majorprice'];
                 $user->save();
 
-                if ($data['hourclasses'] && $data['promotionalprices']) {
+                if (isset($data['hourclasses']) && isset($data['promotionalprices'])) {
                     $arrays = array_combine($data['hourclasses'] , $data['promotionalprices']);
 
                     foreach ($arrays as $hourclass => $promotionalprice) {

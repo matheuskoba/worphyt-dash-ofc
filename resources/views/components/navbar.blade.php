@@ -8,6 +8,7 @@
             <div class="menus">
                 <ul>
                     <li><a href="http://127.0.0.1:8000/dashboard"><i class="fa-solid fa-house"></i>Inicio</a></li>
+                    <li><a href="http://127.0.0.1:8000/dashboard/professional/list"><i class="fa-solid fa-user-tie"></i>Buscar</a></li>
                     <li><a href="http://127.0.0.1:8000/dashboard/perfil"><i class="fa-solid fa-user"></i>Perfil</a></li>
                 </ul>
             </div>

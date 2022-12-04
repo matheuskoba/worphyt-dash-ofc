@@ -67,6 +67,11 @@ Route::prefix('/dashboard/perfil')->group(function () {
     Route::post('addpack', [PersonalController::class, 'addPack'])->name('add.pack');
 });
 
+Route::prefix('/dashboard/professional')->group(function () {
+    Route::get('list', [PersonalController::class, 'list'])->name('list.professional');
+    Route::post('list/filter', [PersonalController::class, 'filter'])->name('professional.filter');
+});
+
 Route::get('/dashboard', [PersonalController::class, 'showAppointments'])->name('dashboard');
 
 Route::get('/', [SiteController::class, 'site']);

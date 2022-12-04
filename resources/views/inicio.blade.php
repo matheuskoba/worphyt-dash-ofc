@@ -21,122 +21,64 @@
                 <h2>Dashboard</h2>
                 <p>Agendamentos</p>
             </div>
-            <div class="card">
-                <div class="card-1 margin-right">
-                    <div class="avatar">
-                        <img src="{{ asset('img/user.png') }}" alt="profile">
-                    </div>
-                    <div class="name">
-                        <h6>{{ $user->name }}</h6>
-                    </div>
-                    <div class="rate">
-                        @php $starPersonal = $user->stars; @endphp
-                        @foreach(range(1,5) as $i)
-                            <span class="fa-stack" style="width:1em">
-                                <i class="far fa-star fa-stack-1x"></i>
-                                @if($starPersonal >0)
-                                    @if($starPersonal >0.5)
-                                        <i class="fas fa-star fa-stack-1x"></i>
-                                    @else
-                                        <i class="fas fa-star-half fa-stack-1x"></i>
+            @foreach($professionals as $professional)
+                <div class="card">
+                    <div class="card-1 margin-right">
+                        <div class="avatar">
+                            <img src="{{ asset('img/user.png') }}" alt="profile">
+                        </div>
+                        <div class="name">
+                            <h6>{{ $professional->name }}</h6>
+                        </div>
+                        <div class="rate">
+                            @foreach(range(1,5) as $i)
+                                <span class="fa-stack" style="width:1em">
+                                    <i class="far fa-star fa-stack-1x"></i>
+                                    @if($professional->stars >0)
+                                        @if($professional->stars >0.5)
+                                            <i class="fas fa-star fa-stack-1x"></i>
+                                        @else
+                                            <i class="fas fa-star-half fa-stack-1x"></i>
+                                        @endif
                                     @endif
-                                @endif
-                            </span>
-                        @endforeach
+                                </span>
+                            @endforeach
+                        </div>
+                        <div class="note">
+                            <p>{{ $professional->stars }}</p>
+                        </div>
                     </div>
-                    <div class="note">
-                        <p>{{ $starPersonal }}</p>
+                    <div class="card-2 margin-right">
+                        <p>Local de atendimento:</p>
+                        <h6>Bluefit</h6>
+                        <p>Região:</p>
+                        <h6>Taguatinga</h6>
+                        <p>Objetivo:</p>
+                        <h6>Hipertrofia</h6>
                     </div>
-                </div>
-                <div class="card-2 margin-right">
-                    <p>Local de atendimento:</p>
-                    <h6>Bluefit</h6>
-                    <p>Região:</p>
-                    <h6>Taguatinga</h6>
-                    <p>Objetivo:</p>
-                    <h6>Hipertrofia</h6>
-                </div>
-                <div class="card-3 margin-right">
-                    <p>Data:</p>
-                    <h6>27/07/2022</h6>
-                    <p>Hora:</p>
-                    <h6>15:00</h6>
-                    <p>Tipo de atendimento:</p>
-                    <h6>Presencial e Remoto</h6>
-                </div>
-                <div class="card-4">
-                    <div class="buttons">
-                        <button><i class="fa-solid fa-x"></i></button>
-                        <button><i class="fa-solid fa-check"></i></button>
+                    <div class="card-3 margin-right">
+                        <p>Data:</p>
+                        <h6>27/07/2022</h6>
+                        <p>Hora:</p>
+                        <h6>15:00</h6>
+                        <p>Tipo de atendimento:</p>
+                        <h6>Presencial e Remoto</h6>
                     </div>
-                    <p>Contato: </p>
-                    <div class="contact">
-                        <a href="#">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <h6>Whatsapp</h6>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-1 margin-right">
-                    <div class="avatar">
-                        <img src="{{ asset('img/user.png') }}" alt="profile">
-                    </div>
-                    <div class="name">
-                        <h6>{{ $user->name }}</h6>
-                    </div>
-                    <div class="rate">
-                        @php $starPersonal = $user->stars; @endphp
-                        @foreach(range(1,5) as $i)
-                            <span class="fa-stack" style="width:1em">
-                                <i class="far fa-star fa-stack-1x"></i>
-                                @if($starPersonal >0)
-                                    @if($starPersonal >0.5)
-                                        <i class="fas fa-star fa-stack-1x"></i>
-                                    @else
-                                        <i class="fas fa-star-half fa-stack-1x"></i>
-                                    @endif
-                                @endif
-                            </span>
-                        @endforeach
-                    </div>
-                    <div class="note">
-                        <p>{{ $starPersonal }}</p>
+                    <div class="card-4">
+                        <div class="buttons">
+                            <button><i class="fa-solid fa-x"></i></button>
+                            <button><i class="fa-solid fa-check"></i></button>
+                        </div>
+                        <p>Contato: </p>
+                        <div class="contact">
+                            <a href="#">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <h6>Whatsapp</h6>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="card-2 margin-right">
-                    <p>Local de atendimento:</p>
-                    <h6>Bluefit</h6>
-                    <p>Região:</p>
-                    <h6>Taguatinga</h6>
-                    <p>Objetivo:</p>
-                    <h6>Hipertrofia</h6>
-                </div>
-                <div class="card-3 margin-right">
-                    <p>Data:</p>
-                    <h6>27/07/2022</h6>
-                    <p>Hora:</p>
-                    <h6>15:00</h6>
-                    <p>Tipo de atendimento:</p>
-                    <h6>Presencial e Remoto</h6>
-                </div>
-                <div class="card-4">
-                    <div class="buttons">
-                        <button><i class="fa-solid fa-x"></i></button>
-                        <button><i class="fa-solid fa-check"></i></button>
-                    </div>
-                    <p>Contato: </p>
-                    <div class="contact">
-                        <a href="#">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <h6>Whatsapp</h6>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
+            @endforeach
         </div>
     </body>
 </html>

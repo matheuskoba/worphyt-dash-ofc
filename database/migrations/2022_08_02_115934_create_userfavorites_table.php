@@ -17,7 +17,6 @@ return new class extends Migration
         Schema::create('userfavorites', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->references('id')->on('users')->onDelete('CASCADE');
-            $table->foreignIdFor(User::class)->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 
@@ -29,7 +28,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('userfavorites', function(Blueprint $table){
-            $table->dropForeignIdFor(User::class);
             $table->dropForeignIdFor(User::class);
         });
         Schema::dropIfExists('userfavorites');
